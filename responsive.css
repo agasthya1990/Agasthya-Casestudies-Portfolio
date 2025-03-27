@@ -1,0 +1,6 @@
+/* WRP-8: Responsive layout rules */
+@media screen and (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+}
