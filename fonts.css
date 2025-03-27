@@ -1,0 +1,4 @@
+/* WRP-22: Font pairing and headings */
+h1, h2 {
+  font-family: 'Montserrat', sans-serif;
+}
