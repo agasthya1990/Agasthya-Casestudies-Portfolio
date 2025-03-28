@@ -1,0 +1,40 @@
+<!-- WRP-8: Mobile responsive section -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .box {
+      background: #f3f3f3;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .box {
+        background: #d9f99d;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .box {
+        background: #fca5a5;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    This layout responds to your screen size. Resize your browser or try it on mobile!
+  </div>
+</body>
+</html>
