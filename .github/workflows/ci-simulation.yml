@@ -1,0 +1,17 @@
+name: Simulated CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Simulate test run
+        run: echo "✅ Simulated tests passed for current commit"
