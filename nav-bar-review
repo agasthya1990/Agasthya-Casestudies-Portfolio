@@ -1,5 +1,5 @@
-<!-- Added ARIA role for accessibility -->
-<nav role="navigation">
+<!-- WRP-7: Added ARIA role and label for accessibility -->
+<nav role="navigation" aria-label="Primary navigation">
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
