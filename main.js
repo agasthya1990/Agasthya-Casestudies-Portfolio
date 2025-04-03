@@ -33,7 +33,7 @@ async function getActiveUsersOptimized() {
   const { data, error } = await supabase
     .from("public.users")
     .select("*")
-    .eq("is_active", null);
+    .eq("is_active", true);
 
   if (error) {
     console.error("❌ Optimized query error:", error);
