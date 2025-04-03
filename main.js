@@ -1,32 +1,48 @@
+// WRP-11: Supabase Integration + Query Optimization Simulation
+
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+// 🔐 Replace these with your actual project credentials
 const supabaseUrl = 'https://YOUR_PROJECT_ID.supabase.co';
 const supabaseKey = 'YOUR_ANON_KEY';
 const supabase = createClient(supabaseUrl, supabaseKey);
-console.time("bad-query");
+
+// ❌ Bad query: fetch all users, filter in frontend
 async function getActiveUsersBad() {
+  console.time("bad-query");
+
   const { data, error } = await supabase
     .from("users")
     .select("*");
+
   if (error) {
-    console.error("Bad query error:", error);
+    console.error("❌ Bad query error:", error);
     return;
   }
+
   const activeUsers = data.filter(user => user.is_active);
   console.timeEnd("bad-query");
-  console.log("Active users (bad query - frontend filter):", activeUsers);
+  console.log("⚠️ Active users (bad query - frontend filter):", activeUsers);
 }
-console.time("good-query");
+
+// ✅ Good query: filter directly in Supabase (DB-side)
 async function getActiveUsersOptimized() {
+  console.time("good-query");
+
   const { data, error } = await supabase
     .from("users")
     .select("*")
     .eq("is_active", true);
+
   if (error) {
-    console.error("Optimized query error:", error);
+    console.error("❌ Optimized query error:", error);
     return;
   }
+
   console.timeEnd("good-query");
-  console.log("Active users (optimized - DB filter):", data);
+  console.log("✅ Active users (optimized - DB filter):", data);
 }
+
+// 🚀 Run both for benchmark comparison
 getActiveUsersBad();
 getActiveUsersOptimized();
