@@ -13,4 +13,37 @@
   <a href="responsive-demo.html">View Responsive Layout (WRP-8)</a>
   <a href="accessibility-demo.html">View Accessibility Demo (WRP-9)</a>
 </body>
+<!-- WRP-10: Page Load Performance Optimization -->
+<!-- We will add lazy loading, defer non-critical scripts, and optimize CSS -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Website Redesign - Optimized</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Preconnect to important domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Website</h1>
+  </header>
+  <section>
+    <h2>Our Work</h2>
+    <img src="images/project1.jpg" alt="Project 1" loading="lazy" />
+    <img src="images/project2.jpg" alt="Project 2" loading="lazy" />
+  </section>
+  <section>
+    <h2>Meet the Team</h2>
+    <img src="images/team.jpg" alt="Our Team" loading="lazy" />
+  </section>
+  <!-- Defer JS execution to avoid render blocking -->
+  <script src="main.js" defer></script>
+  <!-- Example: Async script (if needed) -->
+  <script async src="https://example.com/analytics.js"></script>
+</body>
 </html>
