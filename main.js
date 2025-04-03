@@ -13,7 +13,7 @@ async function getActiveUsersBad() {
   console.time("bad-query");
 
   const { data, error } = await supabase
-    .from("wrp-sprint2-db")
+    .from("public.users")
     .select("*");
 
   if (error) {
@@ -31,9 +31,9 @@ async function getActiveUsersOptimized() {
   console.time("good-query");
 
   const { data, error } = await supabase
-    .from("users")
+    .from("pubic.users")
     .select("*")
-    .eq("is_active", true);
+    .eq("is_active", null);
 
   if (error) {
     console.error("❌ Optimized query error:", error);
