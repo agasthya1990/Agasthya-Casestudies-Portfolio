@@ -13,7 +13,7 @@ async function getActiveUsersBad() {
   console.time("bad-query");
 
   const { data, error } = await supabase
-    .from("users")
+    .from("wrp-sprint2-db")
     .select("*");
 
   if (error) {
