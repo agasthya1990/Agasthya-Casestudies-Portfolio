@@ -1,10 +1,10 @@
 // WRP-11: Supabase Integration + Query Optimization Simulation
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+import { createClient } from 'https://gnifkithkysdukuudzcq.supabase.co';
 
 // 🔐 Replace these with your actual project credentials
-const supabaseUrl = 'https://YOUR_PROJECT_ID.supabase.co';
-const supabaseKey = 'YOUR_ANON_KEY';
+const supabaseUrl = 'https://gnifkithkysdukuudzcq.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaWZraXRoa3lzZHVrdXVkemNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM2OTg2OTQsImV4cCI6MjA1OTI3NDY5NH0.I2KhAme9hyVppJKru5_7ZFoDs1qL1tt1DhM_A8bkxk4';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // ❌ Bad query: fetch all users, filter in frontend
