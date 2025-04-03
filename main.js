@@ -39,7 +39,6 @@ async function getActiveUsersOptimized() {
     console.error("❌ Optimized query error:", error);
     return;
   }
-
   console.timeEnd("good-query");
   console.log("✅ Active users (optimized - DB filter):", data);
 }
