@@ -63,13 +63,15 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
-  color: #ffffff; /* Crisp white text for contrast */
+  background-color: rgba(20, 20, 20, 0.8); /* Dark and visible */
+  color: #ffffff; /* Crisp white text */
   transform: scale(1.05);
   border-radius: 12px;
   padding: 6px 12px;
   transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Optional: subtle glow */
 }
+
 
 /* === Image Styling === */
 img {
