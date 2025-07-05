@@ -92,7 +92,7 @@ img {
   }
   .site-footer {
   background-color: rgba(0, 0, 0, 0.6); /* Semi-dark to match nav bar feel */
-  color: #ffffff;
+  color: #000000;
   font-family: 'Segoe UI', sans-serif;
   font-size: 1em;
   text-align: center;
