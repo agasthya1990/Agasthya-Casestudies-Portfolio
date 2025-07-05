@@ -95,13 +95,13 @@ img {
   max-width: 1000px;
   margin: 60px auto;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.55); /* Faded black */
+  background-color: rgba(0, 0, 0, 0.8); /* Darker transparent black */
   border-radius: 18px;
   color: #f2f2f2;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1.1em;
   line-height: 1.8;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   text-align: justify;
 }
 
