@@ -90,4 +90,15 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
+  .site-footer {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-dark to match nav bar feel */
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1em;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+}
+
 }
