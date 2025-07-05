@@ -90,18 +90,16 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
-  <style>
-  site-footer
-  {
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-dark to match nav bar feel */
-  color: #000000;
+.site-footer {
+  background-color: rgba(255, 255, 255, 0.85); /* Light background for contrast */
+  color: #000000; /* Pure black text */
   font-family: 'Segoe UI', sans-serif;
   font-size: 1em;
   text-align: center;
   padding: 20px 10px;
   margin-top: 60px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Subtle divider */
 }
- </style>
+
 
 }
