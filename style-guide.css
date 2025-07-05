@@ -1,22 +1,46 @@
-/* WRP-22: Primary color and font settings */
+/* === Global Font and Body Styling === */
 body {
   font-family: 'Arial', sans-serif;
   color: white;
   background: url('images/boardroom.jpg') no-repeat center center fixed;
   background-size: cover;
-  margin: 0;
-  padding: 0;
+  color: white;
 }
 
-/* Header styling */
 header {
   background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
   padding: 40px;
   text-align: center;
 }
 
-/* Typography */
 h1, p {
   margin: 0;
-  color: #fff;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Section Styling (if used) === */
+section {
+  padding: 40px 20px;
+}
+
+/* === Image Styling (if needed later) === */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
