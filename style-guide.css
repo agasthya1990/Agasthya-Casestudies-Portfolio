@@ -34,27 +34,10 @@ p {
 }
 
 /* === Navigation Menu === */
-nav {
-  text-align: center;
-  margin-top: 30px;
-}
-
-nav li {
-  display: inline-block;
-  margin: 0 20px;
-}
-
 nav a {
-  color: #fefefe;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1em;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #ffd700;
-  text-decoration: underline;
+  color: #2e2e2e;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+  /* ...rest stays the same */
 }
 
 /* === Section Styling (if used) === */
