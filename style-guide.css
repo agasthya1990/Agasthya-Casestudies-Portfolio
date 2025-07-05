@@ -5,11 +5,11 @@ body {
   background-color: #f9f9f9;
 }
 body {
-  background: url('file:///C:/Users/hp/Pictures/boardroom.jpg.jpg') no-repeat center center fixed;
-  background-size: cover;
+  font-family: 'Arial', sans-serif;
   color: white;
+  background: url('images/boardroom.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
-
 header {
   background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
   padding: 40px;
