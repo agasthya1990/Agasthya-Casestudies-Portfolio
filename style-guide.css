@@ -31,7 +31,7 @@ header p {
   font-size: 1.8em;
   color: #f0f0f0;
   line-height: 1.6;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
@@ -90,14 +90,4 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
-  
-.site-footer {
-  background-color: rgba(255, 255, 255, 0.9); /* Light translucent background */
-  color: #000000;  /* Pure black text */
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 1em;
-  text-align: center;
-  padding: 20px 10px;
-  margin-top: 60px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Light separator */
-}
+
