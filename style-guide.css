@@ -4,3 +4,19 @@ body {
   color: #333;
   background-color: #f9f9f9;
 }
+body {
+  background: url('file:///C:/Users/hp/Pictures/boardroom.jpg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+  padding: 40px;
+  text-align: center;
+}
+
+h1, p {
+  margin: 0;
+  color: #fff;
+}
