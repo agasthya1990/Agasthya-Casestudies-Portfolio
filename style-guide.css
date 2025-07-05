@@ -27,7 +27,7 @@ header h1 {
 }
 
 header p {
-  font-family: 'Georgia', serif;
+  font-family: 'Inter', serif;
   font-size: 1.6em;
   color: #f0f0f0;
   line-height: 1.6;
@@ -46,24 +46,26 @@ nav ul {
 
 nav li {
   display: inline-block;
-  margin: 0 25px;
+  margin: 0 15px;
 }
 
 nav a {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+  color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
-  color: #2e2e2e;
-  font-size: 1.15em;
-  font-weight: 700;
+  font-size: 1.1em;
+  font-weight: 600;
   text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  text-decoration: underline;
-  color: #111;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #f0f0f0;
+  transform: scale(1.05);
 }
 
 
