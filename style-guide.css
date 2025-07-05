@@ -1,46 +1,83 @@
 /* === Global Font and Body Styling === */
 body {
-  font-family: 'Arial', sans-serif;
-  color: grey;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
   background: url('/images/casestudyroom.png') no-repeat center center fixed;
   background-size: cover;
-  color: white;
-}
-
-header {
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
-  padding: 40px;
-  text-align: center;
-}
-
-h1, p {
+  color: #f2f2f2;
   margin: 0;
+  padding: 0;
+}
+
+/* === Header Section === */
+header {
+  background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+  padding: 80px 20px;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* === Title and Subtitle === */
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+p {
+  font-size: 1.4em;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: #e0e0e0;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* === Navigation Menu === */
+nav {
+  text-align: center;
+  margin-top: 30px;
 }
 
 nav li {
   display: inline-block;
-  margin: 0 15px;
+  margin: 0 20px;
 }
 
 nav a {
-  color: white;
+  color: #fefefe;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
+  color: #ffd700;
   text-decoration: underline;
 }
 
 /* === Section Styling (if used) === */
 section {
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
-/* === Image Styling (if needed later) === */
+/* === Image Styling === */
 img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+/* === Fade-in Animation === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
