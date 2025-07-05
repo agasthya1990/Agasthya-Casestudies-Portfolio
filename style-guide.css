@@ -27,7 +27,7 @@ header h1 {
 }
 
 header p {
-  font-family: 'Inter', serif;
+  font-family: 'Helvetica', serif;
   font-size: 1.6em;
   color: #f0f0f0;
   line-height: 1.6;
@@ -63,11 +63,13 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #f0f0f0;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+  color: #ffffff; /* Crisp white text for contrast */
   transform: scale(1.05);
+  border-radius: 12px;
+  padding: 6px 12px;
+  transition: all 0.2s ease-in-out;
 }
-
 
 /* === Image Styling === */
 img {
