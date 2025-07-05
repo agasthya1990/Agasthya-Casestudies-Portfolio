@@ -90,16 +90,19 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
+/* === About Page Styling === */
 .about-wrapper {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 60px auto;
-  background-color: rgba(0, 0, 0, 0.55);
-  padding: 30px;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.55); /* Faded black */
   border-radius: 18px;
   color: #f2f2f2;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.7;
   font-size: 1.1em;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  text-align: justify;
 }
+
 
