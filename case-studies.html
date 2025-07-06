@@ -17,8 +17,7 @@
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
     import {
       getAuth,
-      signInWithPopup,
-      GoogleAuthProvider,
+      signInWithEmailAndPassword,
       onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
@@ -34,25 +33,28 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const auth = getAuth();
-    const provider = new GoogleAuthProvider();
     const adminEmail = "agasthyarocker@gmail.com";
 
     let isAdmin = false;
 
-    document.getElementById("admin-login-btn").addEventListener("click", async () => {
+    document.getElementById("admin-login-link").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const email = prompt("Enter admin email:");
+      const password = prompt("Enter password:");
+
       try {
-        const result = await signInWithPopup(auth, provider);
+        const result = await signInWithEmailAndPassword(auth, email, password);
         const user = result.user;
         if (user.email === adminEmail) {
           isAdmin = true;
-          document.getElementById("admin-login-btn").style.display = "none";
+          document.getElementById("admin-login-link").style.display = "none";
           loadCaseStudies();
         } else {
-          alert("Access denied. You are not the admin.");
+          alert("Access denied. Not admin.");
         }
       } catch (err) {
-        console.error("Login error:", err);
-        alert("Login failed.");
+        console.error("Login failed:", err.message);
+        alert("Login failed: " + err.message);
       }
     });
 
@@ -118,7 +120,7 @@
     onAuthStateChanged(auth, (user) => {
       if (user && user.email === adminEmail) {
         isAdmin = true;
-        document.getElementById("admin-login-btn").style.display = "none";
+        document.getElementById("admin-login-link").style.display = "none";
         loadCaseStudies();
       } else {
         loadCaseStudies();
@@ -218,9 +220,9 @@
         <li><a href="about.html">About Me</a></li>
         <li><a href="case-studies.html">Case Studies</a></li>
         <li><a href="contact.html">Contact Information</a></li>
+        <li><a href="#" id="admin-login-link">Admin Login</a></li>
       </ul>
     </nav>
-    <button id="admin-login-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 1em; background-color: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer;">🔐 Admin Login</button>
   </header>
 
   <main>
