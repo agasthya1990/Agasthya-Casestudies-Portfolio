@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>My Case Studies – Agasthya C.V</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import {
@@ -65,13 +66,14 @@
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 60px 20px 40px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 60px 20px 30px;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     header h1 {
-      font-size: 3em;
+      font-size: 2.8em;
       margin: 0;
       font-weight: bold;
     }
@@ -80,10 +82,36 @@
       font-size: 1.2em;
       font-style: italic;
       color: #ddd;
-      margin: 10px auto 30px;
-      max-width: 700px;
+      margin-top: 10px;
     }
-  
+
+    nav {
+      margin-top: 25px;
+    }
+
+    nav a {
+      display: inline-block;
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    nav a.active {
+      background-color: #ffcc00;
+      color: #000;
+    }
+
     main {
       max-width: 900px;
       margin: 60px auto;
@@ -95,26 +123,15 @@
   </style>
 </head>
 <body>
-
   <header>
     <h1>My Case Studies</h1>
     <p>This site isn’t about theories — it’s about what actually worked.</p>
-  <nav>
-  <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; flex-wrap: wrap;">
-    <li style="margin: 10px;">
-      <a href="index.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">Home</a>
-    </li>
-    <li style="margin: 10px;">
-      <a href="about.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">About Me</a>
-    </li>
-    <li style="margin: 10px;">
-      <a href="case-studies.html" style="text-decoration: none; color: black; background-color: #ffcc00; border: 2px solid #ffcc00; padding: 10px 20px; border-radius: 8px; font-weight: bold;">Case Studies</a>
-    </li>
-    <li style="margin: 10px;">
-      <a href="contact.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">Contact Information</a>
-    </li>
-  </ul>
-</nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="case-studies.html" class="active">Case Studies</a>
+      <a href="contact.html">Contact Information</a>
+    </nav>
   </header>
 
   <main>
@@ -122,6 +139,5 @@
       <!-- Firebase case studies will load here -->
     </div>
   </main>
-
 </body>
 </html>
