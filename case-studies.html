@@ -17,9 +17,9 @@
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
     import {
       getAuth,
-      onAuthStateChanged,
       signInWithPopup,
-      GoogleAuthProvider
+      GoogleAuthProvider,
+      onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
     const firebaseConfig = {
@@ -34,24 +34,39 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    const adminEmail = "agasthyarocker@gmail.com";
 
-    const adminEmail = "agasthyarocker@gmail.com"; // 👈 Your real admin email
     let isAdmin = false;
 
-    onAuthStateChanged(auth, async (user) => {
-      const container = document.getElementById("case-studies-container");
-
-      if (user && user.email === adminEmail) {
-        isAdmin = true;
+    document.getElementById("admin-login-btn").addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        if (user.email === adminEmail) {
+          isAdmin = true;
+          document.getElementById("admin-login-btn").style.display = "none";
+          loadCaseStudies();
+        } else {
+          alert("Access denied. You are not the admin.");
+        }
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("Login failed.");
       }
+    });
 
+    async function loadCaseStudies() {
+      const container = document.getElementById("case-studies-container");
+      container.innerHTML = "";
       const querySnapshot = await getDocs(collection(db, "caseStudies"));
+
       querySnapshot.forEach((docSnap) => {
         const data = docSnap.data();
         const docId = docSnap.id;
 
         const card = document.createElement("div");
-        card.className = "fade-in";
+        card.classList.add("fade-in");
         card.style = `
           background-color: rgba(0, 0, 0, 0.6);
           color: #f0f0f0;
@@ -73,18 +88,18 @@
         if (isAdmin) {
           const editBtn = document.createElement("button");
           editBtn.innerText = "Edit";
-          editBtn.style = "margin-top: 12px; margin-right: 10px; padding: 6px 14px; border-radius: 6px; background-color: #007acc; color: white; border: none; cursor: pointer;";
-          editBtn.onclick = () => alert("Edit functionality coming soon for ID: " + docId);
+          editBtn.style = "margin-right: 10px; padding: 6px 14px; border-radius: 6px; background-color: #007acc; color: white; border: none; cursor: pointer;";
+          editBtn.onclick = () => alert("Edit feature coming soon for ID: " + docId);
 
           const delBtn = document.createElement("button");
           delBtn.innerText = "Delete";
-          delBtn.style = "margin-top: 12px; padding: 6px 14px; border-radius: 6px; background-color: #cc0000; color: white; border: none; cursor: pointer;";
+          delBtn.style = "padding: 6px 14px; border-radius: 6px; background-color: #cc0000; color: white; border: none; cursor: pointer;";
           delBtn.onclick = async () => {
             if (confirm("Are you sure you want to delete this case study?")) {
               try {
                 await deleteDoc(doc(db, "caseStudies", docId));
                 alert("Deleted successfully.");
-                location.reload();
+                loadCaseStudies();
               } catch (err) {
                 console.error("Error deleting:", err);
                 alert("Error deleting case study.");
@@ -98,6 +113,16 @@
 
         container.appendChild(card);
       });
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.email === adminEmail) {
+        isAdmin = true;
+        document.getElementById("admin-login-btn").style.display = "none";
+        loadCaseStudies();
+      } else {
+        loadCaseStudies();
+      }
     });
   </script>
 
@@ -123,15 +148,15 @@
       }
     }
 
-    main {
-      flex: 1;
-    }
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: url('/images/casestudyroom.png') no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
+    }
+
+    header.fade-in, nav.fade-in, h1.fade-in, p.fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
     }
 
     header {
@@ -139,19 +164,6 @@
       padding: 60px 20px 30px;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    header h1 {
-      font-size: 2.8em;
-      margin: 0;
-      font-weight: bold;
-    }
-
-    header p {
-      font-size: 1.2em;
-      font-style: italic;
-      color: #ddd;
-      margin-top: 10px;
     }
 
     nav ul {
@@ -172,7 +184,6 @@
       border-radius: 25px;
       background-color: rgba(0, 0, 0, 0.5);
       color: #ffffff;
-      font-family: 'Segoe UI', sans-serif;
       font-size: 1.3em;
       font-weight: 700;
       letter-spacing: 0.5px;
@@ -182,14 +193,12 @@
 
     nav a:hover {
       background-color: rgba(20, 20, 20, 0.85);
-      color: #ffffff;
       transform: scale(1.05);
-      border-radius: 25px;
-      padding: 12px 24px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     main {
+      flex: 1;
       max-width: 900px;
       margin: 60px auto;
       padding: 30px;
@@ -200,18 +209,18 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="fade-in">
     <h1 class="fade-in">My Case Studies</h1>
     <p class="fade-in">This site isn’t about theories — it’s about what actually worked.</p>
     <nav class="fade-in">
-    <!-- nav items -->
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="case-studies.html">Case Studies</a></li>
         <li><a href="contact.html">Contact Information</a></li>
       </ul>
-  </nav>
+    </nav>
+    <button id="admin-login-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 1em; background-color: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer;">🔐 Admin Login</button>
   </header>
 
   <main>
