@@ -1,27 +1,21 @@
-<!-- Updated: Only Admins Can Edit/Delete -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>My Case Studies – Agasthya C.V</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Firebase App Scripts -->
+Let me know if this is right 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import {
-      getFirestore,
-      collection,
-      getDocs,
-      deleteDoc,
-      doc
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signInWithPopup,
-      GoogleAuthProvider
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+  getFirestore,
+  collection,
+  getDocs,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
@@ -34,77 +28,179 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const auth = getAuth();
 
-    const adminEmail = "agasthyarocker@gmail.com"; // 🔒 Replace with your real admin email
-
-    let isAdmin = false;
-
-    onAuthStateChanged(auth, async (user) => {
+    window.addEventListener("DOMContentLoaded", async () => {
       const container = document.getElementById("case-studies-container");
-
-      if (user && user.email === adminEmail) {
-        isAdmin = true;
-      }
-
       const querySnapshot = await getDocs(collection(db, "caseStudies"));
-      querySnapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        const docId = docSnap.id;
+window.deleteCase = async (id) => {
+  if (confirm("Are you sure you want to delete this case study?")) {
+    try {
+      await deleteDoc(doc(db, "caseStudies", id));
+      alert("Deleted successfully.");
+      location.reload();
+    } catch (err) {
+      console.error("Error deleting:", err);
+      alert("Error deleting case study.");
+    }
+  }
+};
+window.editCase = (id) => {
+  alert("Edit functionality coming soon for ID: " + id);
+};
 
-        const card = document.createElement("div");
-        card.style = `
-          background-color: rgba(0, 0, 0, 0.6);
-          color: #f0f0f0;
-          padding: 24px;
-          margin-bottom: 20px;
-          border-radius: 12px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-        `;
+    querySnapshot.forEach((doc) => {
+  const data = doc.data();
+  const docId = doc.id;
 
-        card.innerHTML = `
-          <h3 style="font-size: 1.5em; margin-bottom: 12px;">${data.Title}</h3>
-          <p><strong>Situation:</strong> ${data.Situation}</p>
-          <p><strong>Task:</strong> ${data.Task}</p>
-          <p><strong>Action:</strong> ${data.Action}</p>
-          <p><strong>How:</strong> ${data.How}</p>
-          <p><strong>Result:</strong> ${data.Result}</p>
-        `;
+  const card = document.createElement("div");
+  card.style = `
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #f0f0f0;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  `;
 
-        if (isAdmin) {
-          const editBtn = document.createElement("button");
-          editBtn.innerText = "Edit";
-          editBtn.style = "margin-right: 10px; padding: 6px 14px; border-radius: 6px; background-color: #007acc; color: white; border: none; cursor: pointer;";
-          editBtn.onclick = () => alert("Edit feature coming soon for ID: " + docId);
+  card.innerHTML = `
+    <h3 style="font-size: 1.5em; margin-bottom: 12px;">${data.Title}</h3>
+    <p><strong>Situation:</strong> ${data.Situation}</p>
+    <p><strong>Task:</strong> ${data.Task}</p>
+    <p><strong>Action:</strong> ${data.Action}</p>
+    <p><strong>How:</strong> ${data.How}</p>
+    <p><strong>Result:</strong> ${data.Result}</p>
+    <button style="margin-top: 12px; margin-right: 10px; padding: 6px 14px; border-radius: 6px; background-color: #007acc; color: white; border: none; cursor: pointer;" onclick="editCase('${docId}')">Edit</button>
+    <button style="margin-top: 12px; padding: 6px 14px; border-radius: 6px; background-color: #cc0000; color: white; border: none; cursor: pointer;" onclick="deleteCase('${docId}')">Delete</button>
+  `;
 
-          const delBtn = document.createElement("button");
-          delBtn.innerText = "Delete";
-          delBtn.style = "padding: 6px 14px; border-radius: 6px; background-color: #cc0000; color: white; border: none; cursor: pointer;";
-          delBtn.onclick = async () => {
-            if (confirm("Are you sure you want to delete this case study?")) {
-              try {
-                await deleteDoc(doc(db, "caseStudies", docId));
-                alert("Deleted successfully.");
-                location.reload();
-              } catch (err) {
-                console.error("Error deleting:", err);
-                alert("Error deleting case study.");
-              }
-            }
-          };
-
-          card.appendChild(editBtn);
-          card.appendChild(delBtn);
-        }
-
-        container.appendChild(card);
-      });
-    });
+  container.appendChild(card);
+});
+  });
   </script>
+
+  <style>
+    
+    html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('/images/casestudyroom.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 60px 20px 30px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-style: italic;
+      color: #ddd;
+      margin-top: 10px;
+    }
+/* === Navigation Menu === */
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin: 20px 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 12px 24px;  /* Slightly more spacing for larger text */
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark */
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.3em;      /* Increased from 1.1em → more visible */
+  font-weight: 700;      /* Bold for strong readability */
+  letter-spacing: 0.5px; /* Slight spacing helps legibility */
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+nav a:hover {
+  background-color: rgba(20, 20, 20, 0.85); /* Darker on hover */
+  color: #ffffff;
+  transform: scale(1.05);
+  border-radius: 25px;
+  padding: 12px 24px;  /* Keep consistent to prevent flicker */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+    main {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>My Case Studies</h1>
+    <p>This site isn’t about theories — it’s about what actually worked.</p>
+  <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact Information</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    <div id="case-studies-container"></div>
+    <div id="case-studies-container">
+      <!-- Firebase case studies will load here -->
+    </div>
   </main>
+
+<!-- ✅ Footer That Stays at Bottom -->
+<footer style="padding: 20px 10px; background: transparent; text-align: center;">
+  <div style="
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1em;
+    padding: 14px 36px;
+    border-radius: 30px;
+    white-space: nowrap;
+    overflow-x: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+    © 2025 Agasthya C.V – Case Studies & Portfolio Portal • Built & Designed by Agasthya using HTML, CSS & real-time collaboration.
+  </div>
+</footer>
+
+  
 </body>
+
 </html>
