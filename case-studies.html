@@ -3,66 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Studies – Agasthya C.V</title>
+  <title>Agasthya C.V – Case Studies</title>
   <link rel="stylesheet" href="style-guide.css" />
-  <style>
-    body {
-      background: url('/images/casestudyroom.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #f2f2f2;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .case-studies-container {
-      max-width: 1000px;
-      margin: 80px auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 18px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    .case-study {
-      margin-bottom: 40px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 20px;
-    }
-
-    .case-study h3 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .case-study p {
-      font-size: 1.05em;
-      line-height: 1.7;
-      text-align: justify;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <nav>
-  <ul style="list-style: none; display: flex; justify-content: center; padding: 0; margin-top: 20px;">
-    <li style="margin: 0 15px;"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
-    <li style="margin: 0 15px;"><a href="about.html" style="color: white; text-decoration: none;">About Me</a></li>
-    <li style="margin: 0 15px;"><a href="case-studies.html" style="color: white; text-decoration: none;">Case Studies</a></li>
-    <li style="margin: 0 15px;"><a href="contact.html" style="color: white; text-decoration: none;">Contact</a></li>
-  </ul>
-</nav>
-    <h1>My Case Studies</h1>
-    <p>Explore real-world transformation journeys — structured with clarity and intent.</p>
-  </header>
-
-  <div class="case-studies-container" id="caseStudies">
-    <!-- Case Studies will be inserted here by JavaScript -->
-  </div>
-
-  <!-- ✅ Firebase & Data Fetch -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
@@ -79,34 +21,113 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    async function loadCaseStudies() {
+    async function fetchCaseStudies() {
       const querySnapshot = await getDocs(collection(db, "caseStudies"));
-      const container = document.getElementById("caseStudies");
-
-      if (querySnapshot.empty) {
-        container.innerHTML = "<p>No case studies available yet. Stay tuned!</p>";
-        return;
-      }
+      const container = document.getElementById("case-studies-container");
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         const card = document.createElement("div");
-        card.className = "case-study";
-
+        card.className = "case-study-card";
         card.innerHTML = `
           <h3>${data.Title}</h3>
-          <p><strong>Situation:</strong> ${data.Situation}</p>
-          <p><strong>Task:</strong> ${data.Task}</p>
-          <p><strong>Action:</strong> ${data.Action}</p>
-          <p><strong>How:</strong> ${data.How}</p>
-          <p><strong>Result:</strong> ${data.Result}</p>
+<p><strong>Situation:</strong> ${data.Situation}</p>
+<p><strong>Task:</strong> ${data.Task}</p>
+<p><strong>Action:</strong> ${data.Action}</p>
+<p><strong>How:</strong> ${data.How}</p>
+<p><strong>Result:</strong> ${data.Result}</p>
         `;
-
         container.appendChild(card);
       });
     }
 
-    loadCaseStudies();
+    document.addEventListener("DOMContentLoaded", fetchCaseStudies);
   </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('/images/casestudyroom.png') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      color: #f2f2f2;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #case-studies-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .case-study-card {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .case-study-card h3 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>My Case Studies</h1>
+    <p>Explore real-world transformation journeys — structured with clarity and intent.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div id="case-studies-container">
+      <!-- Case Studies will load here -->
+    </div>
+  </main>
 </body>
 </html>
