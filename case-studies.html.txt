@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies – Agasthya C.V</title>
+  <link rel="stylesheet" href="style-guide.css" />
+  <style>
+    body {
+      background: url('/images/casestudyroom.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f2f2f2;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .case-studies-container {
+      max-width: 1000px;
+      margin: 80px auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .case-study {
+      margin-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 20px;
+    }
+
+    .case-study h3 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .case-study p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      text-align: justify;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>My Case Studies</h1>
+    <p>Explore real-world transformation journeys — structured with clarity and intent.</p>
+  </header>
+
+  <div class="case-studies-container" id="caseStudies">
+    <!-- Case Studies will be inserted here by JavaScript -->
+  </div>
+
+  <!-- ✅ Firebase & Data Fetch -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
+      authDomain: "agasthya-case-studies.firebaseapp.com",
+      projectId: "agasthya-case-studies",
+      storageBucket: "agasthya-case-studies.appspot.com",
+      messagingSenderId: "297538227832",
+      appId: "1:297538227832:web:625891c11d377c9d88278d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function loadCaseStudies() {
+      const querySnapshot = await getDocs(collection(db, "caseStudies"));
+      const container = document.getElementById("caseStudies");
+
+      if (querySnapshot.empty) {
+        container.innerHTML = "<p>No case studies available yet. Stay tuned!</p>";
+        return;
+      }
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "case-study";
+
+        card.innerHTML = `
+          <h3>${data.Title}</h3>
+          <p><strong>Situation:</strong> ${data.Situation}</p>
+          <p><strong>Task:</strong> ${data.Task}</p>
+          <p><strong>Action:</strong> ${data.Action}</p>
+          <p><strong>How:</strong> ${data.How}</p>
+          <p><strong>Result:</strong> ${data.Result}</p>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    loadCaseStudies();
+  </script>
+</body>
+</html>
