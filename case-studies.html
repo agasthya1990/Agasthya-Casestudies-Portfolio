@@ -86,10 +86,10 @@
     }
 
     nav {
-      margin-top: 25px;
-    }
+  margin-top: 25px;
+}
 
-    .nav-links {
+.nav-links {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -117,12 +117,6 @@
   background-color: #fff;
   color: #000;
 }
-
-.nav-links a.active {
-  background-color: #ffcc00;
-  color: #000;
-  border-color: #ffcc00;
-}
     
     main {
       max-width: 900px;
@@ -138,14 +132,23 @@
   <header>
     <h1>My Case Studies</h1>
     <p>This site isn’t about theories — it’s about what actually worked.</p>
-  <nav>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Me</a></li>
-    <li><a href="case-studies.html" class="active">Case Studies</a></li>
-    <li><a href="contact.html">Contact Information</a></li>
+<nav>
+  <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; flex-wrap: wrap;">
+    <li style="margin: 10px;">
+      <a href="index.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">Home</a>
+    </li>
+    <li style="margin: 10px;">
+      <a href="about.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">About Me</a>
+    </li>
+    <li style="margin: 10px;">
+      <a href="case-studies.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">Case Studies</a>
+    </li>
+    <li style="margin: 10px;">
+      <a href="contact.html" style="text-decoration: none; color: white; background-color: transparent; border: 2px solid white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">Contact Information</a>
+    </li>
   </ul>
 </nav>
+
   </header>
 
   <main>
