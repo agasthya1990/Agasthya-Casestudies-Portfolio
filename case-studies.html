@@ -8,16 +8,13 @@
     body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: url('/images/casestudyroom.png') no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
     }
 
-    header, nav, h1, p, main, footer {
+    header, nav, h1, p, main {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.8s ease-out forwards;
@@ -61,7 +58,6 @@
     }
 
     main {
-      flex: 1;
       padding: 30px 15px;
     }
 
@@ -71,22 +67,29 @@
       padding: 40px 20px;
       background-color: rgba(0, 0, 0, 0.85);
       border-radius: 18px;
-      text-align: justify;
+      text-align: center;
     }
 
     .case-study-card {
-      background-color: rgba(255, 255, 255, 0.06);
-      padding: 24px;
-      margin-bottom: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      margin: 20px auto;
       border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      max-width: 800px;
       cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .case-study-card:hover {
+      box-shadow: 0 0 18px #e7f5c5;
     }
 
     .case-study-card h3 {
       font-size: 1.5em;
-      text-align: center;
       color: #e7f5c5;
-      text-decoration: underline;
+      text-decoration: none;
+      margin: 0;
     }
 
     .modal {
@@ -101,7 +104,6 @@
       backdrop-filter: blur(5px);
       padding: 40px 20px;
       overflow-y: auto;
-      animation: fadeInUp 0.5s ease-out forwards;
     }
 
     .modal-content {
@@ -112,7 +114,7 @@
       padding: 30px;
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      animation: fadeInUp 0.8s ease-out forwards;
+      text-align: center;
     }
 
     .modal-content h3 {
@@ -123,12 +125,13 @@
 
     .modal-content p {
       font-size: 1.1em;
-      line-height: 1.8;
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
 
     .close-modal {
       float: right;
-      font-size: 1.2em;
+      font-size: 1.5em;
       font-weight: bold;
       color: #ffffff;
       background: none;
@@ -136,21 +139,34 @@
       cursor: pointer;
     }
 
-    footer {
-      padding: 20px 0;
-      text-align: center;
+    .admin-controls {
+      margin-top: 30px;
     }
 
-    footer div {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #ffffff;
-      font-size: 0.95em;
-      padding: 12px 32px;
-      border-radius: 20px;
-      max-width: 90%;
-      margin: 0 auto;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 0.8s ease-out forwards;
+    .edit-btn, .delete-btn {
+      margin: 6px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .edit-btn {
+      background-color: #007acc;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: #cc0000;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
@@ -172,27 +188,30 @@
     <div class="content-container" id="case-studies-container"></div>
   </main>
 
-  <footer>
-    <div>
-      © 2025 Agasthya C.V – Case Studies & Portfolio Portal • Built & Designed by Agasthya using HTML, CSS & real-time collaboration.
-    </div>
-  </footer>
-
   <div class="modal" id="caseStudyModal">
     <div class="modal-content">
-      <button class="close-modal" onclick="document.getElementById('caseStudyModal').style.display='none'">×</button>
+      <button class="close-modal" onclick="document.getElementById('caseStudyModal').style.display='none'">&times;</button>
       <h3 id="modalTitle"></h3>
       <p><strong>Situation:</strong> <span id="modalSituation"></span></p>
       <p><strong>Task:</strong> <span id="modalTask"></span></p>
       <p><strong>Action:</strong> <span id="modalAction"></span></p>
       <p><strong>How:</strong> <span id="modalHow"></span></p>
       <p><strong>Result:</strong> <span id="modalResult"></span></p>
+      <div class="admin-controls" id="adminControls" style="display:none">
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      </div>
     </div>
   </div>
 
+  <footer>
+    &copy; 2025 Agasthya C.V – Case Studies & Portfolio Portal
+  </footer>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
@@ -205,6 +224,14 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth();
+    let isAdmin = false;
+
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.email === "agasthyarocker@gmail.com") {
+        isAdmin = true;
+      }
+    });
 
     async function loadCaseStudies() {
       const container = document.getElementById("case-studies-container");
@@ -224,7 +251,20 @@
           document.getElementById("modalAction").textContent = data.Action;
           document.getElementById("modalHow").textContent = data.How;
           document.getElementById("modalResult").textContent = data.Result;
-          modal.style.display = "block";
+          document.getElementById("caseStudyModal").style.display = "block";
+
+          if (isAdmin) {
+            const controls = document.getElementById("adminControls");
+            controls.style.display = "block";
+            controls.querySelector(".edit-btn").onclick = () => alert("Edit coming soon for: " + docSnap.id);
+            controls.querySelector(".delete-btn").onclick = async () => {
+              if (confirm("Are you sure you want to delete this case study?")) {
+                await deleteDoc(doc(db, "caseStudies", docSnap.id));
+                alert("Deleted successfully.");
+                location.reload();
+              }
+            };
+          }
         };
 
         container.appendChild(card);
