@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Case Studies – Agasthya C.V</title>
+
   <style>
     body {
       margin: 0;
@@ -13,34 +14,40 @@
       background-size: cover;
       color: #ffffff;
     }
+
     header, nav, h1, p, main {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.8s ease-out forwards;
       animation-delay: 0.2s;
     }
+
     @keyframes fadeInUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
     header {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 60px 20px 30px;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
+
     nav ul {
       list-style: none;
       padding: 0;
       text-align: center;
       margin: 20px 0;
     }
+
     nav li {
       display: inline-block;
       margin: 0 15px;
     }
+
     nav a {
       display: inline-block;
       padding: 12px 24px;
@@ -52,13 +59,16 @@
       text-decoration: none;
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
+
     nav a:hover {
       background-color: rgba(20, 20, 20, 0.85);
       transform: scale(1.05);
     }
+
     main {
       padding: 40px 20px;
     }
+
     .content-container {
       max-width: 1000px;
       margin: 60px auto;
@@ -71,6 +81,7 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
       text-align: justify;
     }
+
     .case-study-card {
       background-color: rgba(255, 255, 255, 0.05);
       padding: 24px;
@@ -78,12 +89,14 @@
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
-    .case-study-card h3 {
-      font-size: 1.6em;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #dbe4c0;
-    }
+
+  .case-study-card h3 {
+  font-size: 1.6em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #dbe4c0; /* Soft beige-green */
+}
+
     .edit-btn, .delete-btn {
       margin-top: 10px;
       padding: 6px 14px;
@@ -92,21 +105,25 @@
       cursor: pointer;
       font-weight: bold;
     }
+
     .edit-btn {
       margin-right: 10px;
       background-color: #007acc;
       color: white;
     }
+
     .delete-btn {
       background-color: #cc0000;
       color: white;
     }
+
     footer {
       display: flex;
       justify-content: center;
       padding: 20px 10px;
       background: transparent;
     }
+
     footer div {
       background-color: rgba(0, 0, 0, 0.5);
       color: #ffffff;
@@ -116,6 +133,8 @@
       text-align: center;
       white-space: nowrap;
     }
+
+    /* Edit Modal */
     #editModal {
       display: none;
       position: fixed;
@@ -126,23 +145,25 @@
       justify-content: center;
       align-items: center;
     }
+
     #editModal div {
       background: #fff;
       color: #000;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 8px;
       width: 90%;
-      max-width: 600px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      max-width: 500px;
     }
+
     #editModal textarea, #editModal input {
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       padding: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1em;
     }
+
     #editModal button {
       margin-right: 10px;
       padding: 8px 16px;
@@ -154,7 +175,62 @@
   </style>
 </head>
 <body>
-  <!-- HTML ABOVE REMAINS UNCHANGED -->
+  <header>
+    <h1>My Case Studies</h1>
+    <p>This site isn’t about theories — it’s about what actually worked.</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact Information</a></li>
+        <li><a href="#" id="admin-login-link">Admin Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content-container">
+      <div id="case-studies-container"></div>
+    </div>
+  </main>
+
+  <!-- Edit Modal HTML -->
+  <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:#fff; color:#000; padding:30px 25px; border-radius:10px; width:90%; max-width:600px; box-shadow: 0 4px 16px rgba(0,0,0,0.4); font-family:'Segoe UI', sans-serif;">
+    <h2 style="text-align:center; margin-bottom:20px;">Edit Case Study</h2>
+    
+    <label for="editTitle"><strong>Title</strong></label>
+    <input type="text" id="editTitle" style="width:100%; margin-bottom:15px; padding:8px; border-radius:6px; border:1px solid #ccc;" />
+
+    <label for="editSituation"><strong>Situation:</strong></label>
+    <textarea id="editSituation" rows="3" style="width:100%; margin-bottom:15px;"></textarea>
+
+    <label for="editTask"><strong>Task:</strong></label>
+    <textarea id="editTask" rows="3" style="width:100%; margin-bottom:15px;"></textarea>
+
+    <label for="editAction"><strong>Action:</strong></label>
+    <textarea id="editAction" rows="3" style="width:100%; margin-bottom:15px;"></textarea>
+
+    <label for="editHow"><strong>How:</strong></label>
+    <textarea id="editHow" rows="3" style="width:100%; margin-bottom:15px;"></textarea>
+
+    <label for="editResult"><strong>Result:</strong></label>
+    <textarea id="editResult" rows="3" style="width:100%; margin-bottom:25px;"></textarea>
+
+    <div style="text-align:right;">
+      <button id="saveEditBtn" style="padding:8px 16px; margin-right:10px; background:#007acc; color:white; border:none; border-radius:5px;">Save</button>
+      <button id="cancelEditBtn" style="padding:8px 16px; background:#999; color:white; border:none; border-radius:5px;">Cancel</button>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <footer>
+    <div>
+      © 2025 Agasthya C.V – Case Studies & Portfolio Portal • Built & Designed by Agasthya using HTML, CSS & real-time collaboration.
+    </div>
+  </footer>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
@@ -165,7 +241,14 @@
       getAuth, signInWithEmailAndPassword, onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-    const firebaseConfig = { ... };
+    const firebaseConfig = {
+      apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
+      authDomain: "agasthya-case-studies.firebaseapp.com",
+      projectId: "agasthya-case-studies",
+      storageBucket: "agasthya-case-studies.appspot.com",
+      messagingSenderId: "297538227832",
+      appId: "1:297538227832:web:625891c11d377c9d88278d"
+    };
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -173,43 +256,6 @@
     const adminEmail = "agasthyarocker@gmail.com";
     let isAdmin = false;
     let currentEditId = null;
-
-    async function submitEdit() {
-      if (!currentEditId) return;
-      const updatedData = {
-        Title: document.getElementById("editTitle").value,
-        Situation: document.getElementById("editSituation").value,
-        Task: document.getElementById("editTask").value,
-        Action: document.getElementById("editAction").value,
-        How: document.getElementById("editHow").value,
-        Result: document.getElementById("editResult").value,
-        timestamp: new Date()
-      };
-      try {
-        await updateDoc(doc(db, "caseStudies", currentEditId), updatedData);
-        alert("Case study updated!");
-        closeEditModal();
-        loadCaseStudies();
-      } catch (err) {
-        alert("Update failed: " + err.message);
-      }
-    }
-
-    function openEditModal(id, data) {
-      currentEditId = id;
-      document.getElementById("editTitle").value = data.Title;
-      document.getElementById("editSituation").value = data.Situation;
-      document.getElementById("editTask").value = data.Task;
-      document.getElementById("editAction").value = data.Action;
-      document.getElementById("editHow").value = data.How;
-      document.getElementById("editResult").value = data.Result;
-      document.getElementById("editModal").style.display = "flex";
-    }
-
-    function closeEditModal() {
-      currentEditId = null;
-      document.getElementById("editModal").style.display = "none";
-    }
 
     document.addEventListener("DOMContentLoaded", () => {
       const loginLink = document.getElementById("admin-login-link");
@@ -240,12 +286,6 @@
           loginLink.style.display = "none";
         }
         loadCaseStudies();
-
-        // Attach edit modal button events
-        const saveBtn = document.getElementById("saveEditBtn");
-        const cancelBtn = document.getElementById("cancelEditBtn");
-        if (saveBtn) saveBtn.addEventListener("click", submitEdit);
-        if (cancelBtn) cancelBtn.addEventListener("click", closeEditModal);
       });
     });
 
@@ -253,20 +293,22 @@
       const container = document.getElementById("case-studies-container");
       container.innerHTML = "";
       const querySnapshot = await getDocs(collection(db, "caseStudies"));
+
       querySnapshot.forEach((docSnap) => {
         const data = docSnap.data();
         const docId = docSnap.id;
+
         const card = document.createElement("div");
         card.classList.add("case-study-card");
         card.innerHTML = `
-          <h2 style="text-align:center; color:#aaa; margin-top:0;">Case Study</h2>
-          <h3 style="text-align:center;">${data.Title}</h3>
-          <p><strong>Situation:</strong><br>${data.Situation}</p>
-          <p><strong>Task:</strong><br>${data.Task}</p>
-          <p><strong>Action:</strong><br>${data.Action}</p>
-          <p><strong>How:</strong><br>${data.How}</p>
-          <p><strong>Result:</strong><br>${data.Result}</p>
-        `;
+  <h2 style="text-align:center; color:#aaa; margin-top:0;">Case Study</h2>
+  <h3 style="text-align:center;">${data.Title}</h3>
+  <p><strong>Situation:</strong><br>${data.Situation}</p>
+  <p><strong>Task:</strong><br>${data.Task}</p>
+  <p><strong>Action:</strong><br>${data.Action}</p>
+  <p><strong>How:</strong><br>${data.How}</p>
+  <p><strong>Result:</strong><br>${data.Result}</p>
+`;
         if (isAdmin) {
           const editBtn = document.createElement("button");
           editBtn.innerText = "Edit";
@@ -286,9 +328,46 @@
           card.appendChild(editBtn);
           card.appendChild(delBtn);
         }
+
         container.appendChild(card);
       });
     }
+
+    function openEditModal(id, data) {
+      currentEditId = id;
+      document.getElementById("editTitle").value = data.Title;
+      document.getElementById("editSituation").value = data.Situation;
+      document.getElementById("editTask").value = data.Task;
+      document.getElementById("editAction").value = data.Action;
+      document.getElementById("editHow").value = data.How;
+      document.getElementById("editResult").value = data.Result;
+      document.getElementById("editModal").style.display = "flex";
+    }
+
+    function closeEditModal() {
+      currentEditId = null;
+      document.getElementById("editModal").style.display = "none";
+    }
+
+    async function submitEdit() {
+      if (!currentEditId) return;
+      const updatedData = {
+        Title: document.getElementById("editTitle").value,
+        Situation: document.getElementById("editSituation").value,
+        Task: document.getElementById("editTask").value,
+        Action: document.getElementById("editAction").value,
+        How: document.getElementById("editHow").value,
+        Result: document.getElementById("editResult").value,
+        timestamp: new Date()
+      };
+      await updateDoc(doc(db, "caseStudies", currentEditId), updatedData);
+      alert("Case study updated!");
+      closeEditModal();
+      loadCaseStudies();
+    }
+    window.submitEdit = submitEdit;
+window.closeEditModal = closeEditModal;
+
   </script>
 </body>
 </html>
