@@ -83,63 +83,63 @@
     <button type="submit">Submit Case Study</button>
   </form>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import {
-      getFirestore,
-      collection,
-      addDoc,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
-      authDomain: "agasthya-case-studies.firebaseapp.com",
-      projectId: "agasthya-case-studies",
-      storageBucket: "agasthya-case-studies.appspot.com",
-      messagingSenderId: "297538227832",
-      appId: "1:297538227832:web:625891c11d377c9d88278d"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
+    authDomain: "agasthya-case-studies.firebaseapp.com",
+    projectId: "agasthya-case-studies",
+    storageBucket: "agasthya-case-studies.appspot.com",
+    messagingSenderId: "297538227832",
+    appId: "1:297538227832:web:625891c11d377c9d88278d"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("caseForm");
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+  window.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("caseForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-        const title = document.getElementById("title").value.trim();
-        const situation = document.getElementById("situation").value.trim();
-        const task = document.getElementById("task").value.trim();
-        const action = document.getElementById("action").value.trim();
-        const how = document.getElementById("how").value.trim();
-        const result = document.getElementById("result").value.trim();
+      const title = document.getElementById("title").value.trim();
+      const situation = document.getElementById("situation").value.trim();
+      const task = document.getElementById("task").value.trim();
+      const action = document.getElementById("action").value.trim();
+      const how = document.getElementById("how").value.trim();
+      const result = document.getElementById("result").value.trim();
 
-        if (!title || !situation || !task || !action || !how || !result) {
-          alert("All fields are required.");
-          return;
-        }
+      if (!title || !situation || !task || !action || !how || !result) {
+        alert("All fields are required.");
+        return;
+      }
 
-        try {
-          await addDoc(collection(db, "caseStudies"), {
-            Title: title,
-            Situation: situation,
-            Task: task,
-            Action: action,
-            How: how,
-            Result: result,
-            timestamp: serverTimestamp()
-          });
+      try {
+        await addDoc(collection(db, "caseStudies"), {
+          Title: title,
+          Situation: situation,
+          Task: task,
+          Action: action,
+          How: how,
+          Result: result,
+          timestamp: new Date()
+        });
 
-          alert("✅ Case study submitted successfully!");
-          form.reset();
-        } catch (error) {
-          console.error("❌ Error adding document: ", error);
-          alert("Failed to submit case study. Please try again.");
-        }
-      });
+        alert("✅ Case study submitted successfully!");
+        form.reset();
+      } catch (error) {
+        console.error("❌ Error adding document: ", error);
+        alert("Failed to submit case study. Please try again.");
+      }
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
