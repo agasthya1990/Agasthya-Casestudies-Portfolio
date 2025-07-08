@@ -213,33 +213,31 @@
     <div class="content-container" id="case-studies-container"></div>
   </main>
 
-  <div class="modal" id="caseStudyModal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="document.getElementById('caseStudyModal').style.display='none'">×</button>
-      <h3 id="modalTitle"></h3>
-      <p id="modalTitleContent"></p>
-      <h3>Situation</h3>
-      <p id="modalSituation"></p>
-      <h3>Task</h3>
-      <p id="modalTask"></p>
-      <h3>Action</h3>
-      <p id="modalAction"></p>
-      <h3>How</h3>
-      <p id="modalHow"></p>
-      <h3>Result</h3>
-      <p id="modalResult"></p>
-      <div id="admin-actions"></div>
-    </div>
+<!-- Edit Case Study Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="document.getElementById('editModal').style.display='none'">×</button>
+    <h3>Edit Case Study</h3>
+    <input type="text" id="editTitle" placeholder="Title" /><br /><br />
+    <textarea id="editTitleContent" placeholder="Title Content"></textarea><br /><br />
+    <textarea id="editSituation" placeholder="Situation"></textarea><br /><br />
+    <textarea id="editTask" placeholder="Task"></textarea><br /><br />
+    <textarea id="editAction" placeholder="Action"></textarea><br /><br />
+    <textarea id="editHow" placeholder="How"></textarea><br /><br />
+    <textarea id="editResult" placeholder="Result"></textarea><br /><br />
+    <button class="edit-btn" onclick="saveEditedCaseStudy()">Save Changes</button>
   </div>
+</div>
 
   <footer>
     © 2025 Agasthya C.V – Case Studies & Portfolio Portal • Built & Designed using HTML, CSS & Firebase
   </footer>
-
   <script type="module">
+    let currentEditDocId = null;
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import {
-      getFirestore, collection, getDocs, deleteDoc, doc
+      getFirestore, collection, getDocs, deleteDoc, updateDoc, doc
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
     import {
       getAuth, signInWithEmailAndPassword, onAuthStateChanged
@@ -293,13 +291,13 @@
 
     async function loadCaseStudies() {
       const container = document.getElementById("case-studies-container");
-      const modal = document.getElementById("caseStudyModal");
       const querySnapshot = await getDocs(collection(db, "caseStudies"));
-
       container.innerHTML = "";
+
       querySnapshot.forEach((docSnap) => {
         const data = docSnap.data();
         const docId = docSnap.id;
+
         const card = document.createElement("div");
         card.classList.add("case-study-card");
         card.innerHTML = `<h3>${data.Title}</h3>`;
@@ -319,16 +317,27 @@
             const editBtn = document.createElement("button");
             editBtn.innerText = "Edit";
             editBtn.classList.add("edit-btn");
-            editBtn.onclick = () => alert("Edit feature coming soon for ID: " + docId);
+            editBtn.onclick = (e) => {
+              e.stopPropagation();
+              currentEditDocId = docId;
+              document.getElementById("editTitle").value = data.Title || "";
+              document.getElementById("editTitleContent").value = data.TitleContent || "";
+              document.getElementById("editSituation").value = data.Situation || "";
+              document.getElementById("editTask").value = data.Task || "";
+              document.getElementById("editAction").value = data.Action || "";
+              document.getElementById("editHow").value = data.How || "";
+              document.getElementById("editResult").value = data.Result || "";
+              document.getElementById("editModal").style.display = "block";
+            };
 
             const delBtn = document.createElement("button");
             delBtn.innerText = "Delete";
             delBtn.classList.add("delete-btn");
-            delBtn.onclick = async () => {
+            delBtn.onclick = async (e) => {
+              e.stopPropagation();
               if (confirm("Are you sure you want to delete this case study?")) {
                 await deleteDoc(doc(db, "caseStudies", docId));
                 alert("Deleted.");
-                modal.style.display = "none";
                 loadCaseStudies();
               }
             };
@@ -337,12 +346,36 @@
             adminActions.appendChild(delBtn);
           }
 
-          modal.style.display = "block";
+          document.getElementById("caseStudyModal").style.display = "block";
         };
 
         container.appendChild(card);
       });
     }
+
+    window.saveEditedCaseStudy = async function () {
+      if (!currentEditDocId) return;
+
+      const updatedData = {
+        Title: document.getElementById("editTitle").value,
+        TitleContent: document.getElementById("editTitleContent").value,
+        Situation: document.getElementById("editSituation").value,
+        Task: document.getElementById("editTask").value,
+        Action: document.getElementById("editAction").value,
+        How: document.getElementById("editHow").value,
+        Result: document.getElementById("editResult").value,
+      };
+
+      try {
+        const docRef = doc(db, "caseStudies", currentEditDocId);
+        await updateDoc(docRef, updatedData);
+        alert("Case study updated successfully.");
+        document.getElementById("editModal").style.display = "none";
+        loadCaseStudies();
+      } catch (err) {
+        alert("Error updating: " + err.message);
+      }
+    };
   </script>
 </body>
 </html>
