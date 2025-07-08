@@ -213,25 +213,46 @@
     <div class="content-container" id="case-studies-container"></div>
   </main>
 
-<!-- Edit Case Study Modal -->
-<div class="modal" id="editModal">
-  <div class="modal-content">
-    <button class="close-modal" onclick="document.getElementById('editModal').style.display='none'">×</button>
-    <h3>Edit Case Study</h3>
-    <input type="text" id="editTitle" placeholder="Title" /><br /><br />
-    <textarea id="editTitleContent" placeholder="Title Content"></textarea><br /><br />
-    <textarea id="editSituation" placeholder="Situation"></textarea><br /><br />
-    <textarea id="editTask" placeholder="Task"></textarea><br /><br />
-    <textarea id="editAction" placeholder="Action"></textarea><br /><br />
-    <textarea id="editHow" placeholder="How"></textarea><br /><br />
-    <textarea id="editResult" placeholder="Result"></textarea><br /><br />
-    <button class="edit-btn" onclick="saveEditedCaseStudy()">Save Changes</button>
+  <!-- View Modal -->
+  <div class="modal" id="caseStudyModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="document.getElementById('caseStudyModal').style.display='none'">×</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalTitleContent"></p>
+      <h3>Situation</h3>
+      <p id="modalSituation"></p>
+      <h3>Task</h3>
+      <p id="modalTask"></p>
+      <h3>Action</h3>
+      <p id="modalAction"></p>
+      <h3>How</h3>
+      <p id="modalHow"></p>
+      <h3>Result</h3>
+      <p id="modalResult"></p>
+      <div id="admin-actions"></div>
+    </div>
   </div>
-</div>
+
+  <!-- Edit Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="document.getElementById('editModal').style.display='none'">×</button>
+      <h3>Edit Case Study</h3>
+      <input type="text" id="editTitle" placeholder="Title"><br><br>
+      <textarea id="editTitleContent" placeholder="Title Content"></textarea><br><br>
+      <textarea id="editSituation" placeholder="Situation"></textarea><br><br>
+      <textarea id="editTask" placeholder="Task"></textarea><br><br>
+      <textarea id="editAction" placeholder="Action"></textarea><br><br>
+      <textarea id="editHow" placeholder="How"></textarea><br><br>
+      <textarea id="editResult" placeholder="Result"></textarea><br><br>
+      <button class="edit-btn" onclick="saveEditedCaseStudy()">Save Changes</button>
+    </div>
+  </div>
 
   <footer>
     © 2025 Agasthya C.V – Case Studies & Portfolio Portal • Built & Designed using HTML, CSS & Firebase
   </footer>
+
   <script type="module">
     let currentEditDocId = null;
 
