@@ -30,18 +30,23 @@
 
 <head>
   <style>
-    .fade-body p {
-      line-height: 1.6;
-      padding: 0 12px;
-      max-width: 90%;
-      margin: 0 auto;
-    }
+.fade-body {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px 12px 40px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* This centers child content */
+  text-align: center;   /* This centers inline text content */
+}
 
-    .fade-body {
-      background-color: rgba(0, 0, 0, 0.75); /* already good */
-      padding-top: 20px;
-      padding-bottom: 40px;
-    }
+.fade-body p {
+  line-height: 1.6;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left; /* Optional: keep paragraph text aligned left */
+  padding: 0;
+}
   </style>
 </head>
 
