@@ -5,86 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Me - Agasthya C.V</title>
   <link rel="stylesheet" href="style-guide.css" />
-  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16"> 
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
   <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/png">
+</head>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: url('/images/aboutbackground.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #f2f2f2;
-    }
+<body style="margin: 0; padding: 0; background: url('/images/casestudyroom.png') no-repeat center center fixed; background-size: cover; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 
-    header, nav {
-      text-align: center;
-      padding: 20px 0;
-    }
+  <!-- 🔷 Header -->
+  <header style="
+    max-width: 1000px;
+    width: 90%;
+    margin: 40px auto 20px auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+    <h1>Agasthya C.V - Portfolio & Case Studies</h1>
+    <p>Stories That Shaped My Career and Continue to Teach Me</p>
+  </header>
 
-    nav ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+  <!-- 🔷 Navigation -->
+  <nav style="text-align: center; margin: 30px auto; width: 90%; max-width: 1000px;">
+    <ul style="padding: 0; margin: 0; list-style: none;">
+      <li style="display: inline-block; margin: 0 12px;">
+        <a href="index.html" style="color: #fff; padding: 10px 20px; border-radius: 20px; background-color: rgba(0, 0, 0, 0.5); text-decoration: none; font-weight: bold;">Home</a>
+      </li>
+      <li style="display: inline-block; margin: 0 12px;">
+        <a href="about.html" style="color: #fff; padding: 10px 20px; border-radius: 20px; background-color: rgba(0, 0, 0, 0.5); text-decoration: none; font-weight: bold;">About Me</a>
+      </li>
+      <li style="display: inline-block; margin: 0 12px;">
+        <a href="case-studies.html" style="color: #fff; padding: 10px 20px; border-radius: 20px; background-color: rgba(0, 0, 0, 0.5); text-decoration: none; font-weight: bold;">Case Studies</a>
+      </li>
+      <li style="display: inline-block; margin: 0 12px;">
+        <a href="contact.html" style="color: #fff; padding: 10px 20px; border-radius: 20px; background-color: rgba(0, 0, 0, 0.5); text-decoration: none; font-weight: bold;">Contact Information</a>
+      </li>
+    </ul>
+  </nav>
 
-    nav li {
-      display: inline-block;
-    }
-
-    nav a {
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .glass-container {
+  <!-- 🔷 Main Glass Content -->
+  <main>
+    <div style="
       max-width: 1000px;
       width: 90%;
       margin: 60px auto;
       padding: 40px;
       background-color: rgba(0, 0, 0, 0.8);
       border-radius: 20px;
+      color: #f2f2f2;
+      font-size: 1.1em;
+      line-height: 1.8;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
       text-align: justify;
-    }
-
-    h2 {
-      text-align: center;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <h1>Agasthya C.V - Portfolio & Case Studies</h1>
-    <p>Stories That Shaped My Career and Continue to Teach Me</p>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="contact.html">Contact Information</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <div class="glass-container">
-      <h2>From Recruiter to Program Management & Transitions – My Journey</h2>
+      box-sizing: border-box;">
+      
+      <h2 style="text-align: center;">From Recruiter to Program Management & Transitions – My Journey</h2>
 
       <p>I began my career in 2011 as a recruiter — working closely with candidates and hiring teams, learning firsthand the art of mapping the right talent to the right role. That early exposure to human behavior, process gaps, and stakeholder alignment became the foundation for everything I built after.</p>
 
@@ -102,6 +78,7 @@
     </div>
   </main>
 
+  <!-- ✅ Footer -->
   <footer style="padding: 20px 10px; background: transparent; text-align: center;">
     <div style="
       display: inline-block;
