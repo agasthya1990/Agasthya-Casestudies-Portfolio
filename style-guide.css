@@ -12,6 +12,7 @@ body {
 header {
   background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
   padding: 80px 20px;
+  width: 100%
   text-align: center;
   animation: fadeIn 1.5s ease-in;
 }
