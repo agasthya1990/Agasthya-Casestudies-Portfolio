@@ -32,6 +32,7 @@ header p {
   color: #f0f0f0;
   line-height: 1.6;
   max-width: 1000px;
+  width: 100px;
   margin: 0 auto;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
