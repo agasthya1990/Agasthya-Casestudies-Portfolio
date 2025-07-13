@@ -14,23 +14,39 @@
       background: url('/images/casestudyroom.png') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    header, nav {
-      text-align: center;
-      color: white;
-    }
-
-    nav {
-      margin: 30px auto;
+    .glass-box {
       width: 90%;
       max-width: 1000px;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 30px;
+      margin: 40px auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      text-align: justify;
+    }
+
+    header, nav, footer {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+    }
+
+    header h1, header p {
+      text-align: center;
+      color: white;
     }
 
     nav ul {
       padding: 0;
       margin: 0;
       list-style: none;
+      text-align: center;
     }
 
     nav li {
@@ -51,22 +67,22 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
 
-    .glass-container {
-      max-width: 1000px;
-      width: 90%;
-      margin: 60px auto;
-      padding: 40px;
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 20px;
-      color: #f2f2f2;
-      font-size: 1.1em;
-      line-height: 1.8;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-      text-align: justify;
-      box-sizing: border-box;
+    footer {
+      text-align: center;
     }
 
-    .glass-container h2 {
+    footer div {
+      display: inline-block;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 1em;
+      padding: 14px 36px;
+      border-radius: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
       text-align: center;
     }
   </style>
@@ -74,7 +90,7 @@
 
 <body>
 
-  <header>
+  <header class="glass-box">
     <h1>Agasthya C.V - Portfolio & Case Studies</h1>
     <p>Stories That Shaped My Career and Continue to Teach Me</p>
   </header>
@@ -88,38 +104,26 @@
     </ul>
   </nav>
 
-  <main>
-    <div class="glass-container">
-      <h2>From Recruiter to Program Management & Transitions – My Journey</h2>
+  <main class="glass-box">
+    <h2>From Recruiter to Program Management & Transitions – My Journey</h2>
 
-      <p>I began my career in 2011 as a recruiter — working closely with candidates and hiring teams, learning firsthand the art of mapping the right talent to the right role. That early exposure to human behavior, process gaps, and stakeholder alignment became the foundation for everything I built after.</p>
+    <p>I began my career in 2011 as a recruiter — working closely with candidates and hiring teams, learning firsthand the art of mapping the right talent to the right role. That early exposure to human behavior, process gaps, and stakeholder alignment became the foundation for everything I built after.</p>
 
-      <p>From there, I transitioned into customer service operations, eventually leading high-volume teams across multiple geographies. At Amazon, I took on the role of Team Manager, owning end-to-end delivery across performance, onboarding, stakeholder engagement, and escalations. I worked on specialized case operations and managed leaves management for U.S. employees, bringing empathy and compliance together in sensitive workflows.</p>
+    <p>From there, I transitioned into customer service operations, eventually leading high-volume teams across multiple geographies. At Amazon, I took on the role of Team Manager, owning end-to-end delivery across performance, onboarding, stakeholder engagement, and escalations. I worked on specialized case operations and managed leaves management for U.S. employees, bringing empathy and compliance together in sensitive workflows.</p>
 
-      <p>Later at Accenture, I stepped into a Transition Lead role — onboarding, managing, and stabilizing entire squads in telecom delivery. My focus wasn’t just on day-to-day delivery, but on enabling new hires to succeed despite tech or infrastructure challenges. I navigated cross-functional issues, built glide paths, and created learning loops that influenced org-level practices.</p>
+    <p>Later at Accenture, I stepped into a Transition Lead role — onboarding, managing, and stabilizing entire squads in telecom delivery. My focus wasn’t just on day-to-day delivery, but on enabling new hires to succeed despite tech or infrastructure challenges. I navigated cross-functional issues, built glide paths, and created learning loops that influenced org-level practices.</p>
 
-      <p>What made this journey truly click for me was discovering Agile and Scrum — not as frameworks to memorize, but as tools to solve real problems. I pursued certifications in Scrum and SAFe, and used what I learned to rethink how I led, how I delivered, and how I scaled.</p>
+    <p>What made this journey truly click for me was discovering Agile and Scrum — not as frameworks to memorize, but as tools to solve real problems. I pursued certifications in Scrum and SAFe, and used what I learned to rethink how I led, how I delivered, and how I scaled.</p>
 
-      <p>I also went hands-on with tech. This website — built entirely by me using HTML, CSS, GitHub, Netlify, and VS Code — is more than a portfolio. It’s a reflection of my mindset: to learn actively, build independently, and communicate with clarity.</p>
+    <p>I also went hands-on with tech. This website — built entirely by me using HTML, CSS, GitHub, Netlify, and VS Code — is more than a portfolio. It’s a reflection of my mindset: to learn actively, build independently, and communicate with clarity.</p>
 
-      <p>Today, I’m not just an operations lead. I’m a strategic executor and a continuous learner — equally at home solving delivery issues, coaching people through ambiguity, and telling stories that carry lessons.</p>
+    <p>Today, I’m not just an operations lead. I’m a strategic executor and a continuous learner — equally at home solving delivery issues, coaching people through ambiguity, and telling stories that carry lessons.</p>
 
-      <p>This portal is my proof of work. It’s where I share not just what I did, but how I think, and how I continue to grow.</p>
-    </div>
+    <p>This portal is my proof of work. It’s where I share not just what I did, but how I think, and how I continue to grow.</p>
   </main>
 
-  <footer style="padding: 20px 10px; background: transparent; text-align: center;">
-    <div style="
-      display: inline-block;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #ffffff;
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 1em;
-      padding: 14px 36px;
-      border-radius: 30px;
-      white-space: nowrap;
-      overflow-x: auto;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+  <footer>
+    <div>
       © 2025 Agasthya C.V – Case Studies & Portfolio Portal • Built & Designed by Agasthya using HTML, CSS & real-time collaboration.
     </div>
   </footer>
