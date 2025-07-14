@@ -285,10 +285,22 @@
   <footer>
     &copy; 2025 Agasthya C.V – All Rights Reserved.
   </footer>
+  
   <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, deleteDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    deleteDoc,
+    updateDoc,
+    doc
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
@@ -335,6 +347,17 @@
         document.getElementById("admin-login-link").style.display = "none";
       }
       loadCaseStudies();
+    });
+
+    // ✅ Attach modal close buttons globally
+    document.querySelectorAll('.close-modal').forEach(button => {
+      button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      });
     });
   });
 
@@ -470,7 +493,7 @@
       Task: document.getElementById("editTask").value,
       Action: document.getElementById("editAction").value,
       How: document.getElementById("editHow").value,
-      Result: document.getElementById("editResult").value,
+      Result: document.getElementById("editResult").value
     };
     try {
       await updateDoc(doc(db, "caseStudies", currentEditDocId), updatedData);
@@ -480,17 +503,6 @@
     } catch (err) {
       alert("Error updating: " + err.message);
     }
-    // 🔄 Ensure all close buttons work consistently
-document.querySelectorAll('.close-modal').forEach(button => {
-  button.addEventListener('click', () => {
-    const modalId = button.getAttribute('data-modal');
-    const modal = document.getElementById(modalId);
-    if (modal) {
-      modal.style.display = 'none';
-    }
-  });
-});
-});
   };
 </script>
 </body>
