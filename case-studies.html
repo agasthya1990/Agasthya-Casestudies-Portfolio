@@ -250,37 +250,36 @@
     <div class="content-container" id="case-studies-container"></div>
     <div class="pagination" id="pagination"></div>
   </main>
-    <!-- VIEW MODAL -->
-  <div class="modal" id="caseStudyModal">
-    <div class="modal-content">
-       <button class="close-modal" data-modal="editModal">×</button>
-      <h3 id="modalTitle"></h3>
-      <p id="modalTitleContent"></p>
-      <p><strong>Situation</strong><br><span id="modalSituation"></span></p>
-      <p><strong>Task</strong><br><span id="modalTask"></span></p>
-      <p><strong>Action</strong><br><span id="modalAction"></span></p>
-      <p><strong>How</strong><br><span id="modalHow"></span></p>
-      <p><strong>Result</strong><br><span id="modalResult"></span></p>
-      <div id="admin-actions"></div>
-    </div>
+<!-- VIEW MODAL -->
+<div class="modal" id="caseStudyModal">
+  <div class="modal-content">
+    <button class="close-modal" data-modal="caseStudyModal">×</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalTitleContent"></p>
+    <p><strong>Situation</strong><br><span id="modalSituation"></span></p>
+    <p><strong>Task</strong><br><span id="modalTask"></span></p>
+    <p><strong>Action</strong><br><span id="modalAction"></span></p>
+    <p><strong>How</strong><br><span id="modalHow"></span></p>
+    <p><strong>Result</strong><br><span id="modalResult"></span></p>
+    <div id="admin-actions"></div>
   </div>
-
-  <!-- EDIT MODAL -->
-  <div class="modal" id="editModal">
-    <div class="modal-content">
+</div>
+  
+<!-- EDIT MODAL -->
+<div class="modal" id="editModal">
+  <div class="modal-content">
     <button class="close-modal" data-modal="editModal">×</button>
-        
-      <h3>Edit Case Study</h3>
-      <input type="text" id="editTitle" placeholder="Title" style="width: 100%; margin-bottom: 10px;" />
-      <textarea id="editTitleContent" placeholder="Title Content" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
-      <textarea id="editSituation" placeholder="Situation" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
-      <textarea id="editTask" placeholder="Task" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
-      <textarea id="editAction" placeholder="Action" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
-      <textarea id="editHow" placeholder="How" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
-      <textarea id="editResult" placeholder="Result" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
-      <button class="edit-btn" onclick="saveEditedCaseStudy()">Save</button>
-    </div>
+    <h3>Edit Case Study</h3>
+    <input type="text" id="editTitle" placeholder="Title" style="width: 100%; margin-bottom: 10px;" />
+    <textarea id="editTitleContent" placeholder="Title Content" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
+    <textarea id="editSituation" placeholder="Situation" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
+    <textarea id="editTask" placeholder="Task" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
+    <textarea id="editAction" placeholder="Action" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
+    <textarea id="editHow" placeholder="How" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
+    <textarea id="editResult" placeholder="Result" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
+    <button class="edit-btn" onclick="saveEditedCaseStudy()">Save</button>
   </div>
+</div>
 
   <!-- FOOTER -->
   <footer>
