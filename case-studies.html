@@ -268,7 +268,9 @@
   <!-- EDIT MODAL -->
   <div class="modal" id="editModal">
     <div class="modal-content">
-      <button class="close-modal" onclick="closeModals()">×</button>
+    <button class="close-modal" data-modal="editModal">×</button>
+    <!-- rest of the content --
+        
       <h3>Edit Case Study</h3>
       <input type="text" id="editTitle" placeholder="Title" style="width: 100%; margin-bottom: 10px;" />
       <textarea id="editTitleContent" placeholder="Title Content" rows="2" style="width: 100%; margin-bottom: 10px;"></textarea>
@@ -480,11 +482,16 @@
     } catch (err) {
       alert("Error updating: " + err.message);
     }
-    document.querySelectorAll('.close-modal').forEach(button => {
+    // 🔄 Ensure all close buttons work consistently
+document.querySelectorAll('.close-modal').forEach(button => {
   button.addEventListener('click', () => {
     const modalId = button.getAttribute('data-modal');
-    document.getElementById(modalId).style.display = 'none';
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'none';
+    }
   });
+});
 });
   };
 </script>
