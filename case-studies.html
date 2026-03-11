@@ -121,20 +121,68 @@
 
 .modal-content {
   background-color: rgba(0, 0, 0, 0.99);
-  border: none; 
+  border: none;
   border-radius: 16px;
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.50),  /* crisp “border” ring */
-    0 10px 28px rgba(0, 0, 0, 0.6);       /* depth */
+    0 0 0 2px rgba(255, 255, 255, 0.50),
+    0 10px 28px rgba(0, 0, 0, 0.6);
   width: 100%;
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 40px 25px;
+  padding: 42px 30px;
   box-sizing: border-box;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  text-align: center;
   position: relative;
+}
+
+    /* Keep the modal heading centered */
+.modal-content h3#modalTitle {
+  text-align: center;
+  font-size: 1.9em;
+  color: #e7f5c5;
+  margin-bottom: 10px;
+}
+
+/* Optional subtitle / intro under title */
+#modalTitleContent {
+  text-align: left;
+  font-size: 1.05em;
+  line-height: 1.75;
+  color: #f3f3f3;
+  margin: 0 0 28px;
+  padding: 0 4px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* STAHR content blocks */
+.case-study-section {
+  text-align: left;
+  margin: 0 0 22px;
+  padding: 0 4px;
+}
+
+.case-study-section strong {
+  display: block;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #e7f5c5;
+  margin-bottom: 8px;
+}
+
+.case-study-section span {
+  display: block;
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #f7f7f7;
+  white-space: pre-wrap;
+}
+
+/* Admin buttons remain centered and neatly spaced */
+#admin-actions {
+  text-align: center;
+  margin-top: 28px;
 }
     .modal-content h3 {
       font-size: 1.8em;
@@ -256,17 +304,38 @@
   </main>
 <!-- VIEW MODAL -->
 <div class="modal" id="caseStudyModal">
-  <div class="modal-content">
-    <button class="close-modal" data-modal="caseStudyModal">×</button>
-    <h3 id="modalTitle"></h3>
-    <p id="modalTitleContent"></p>
-    <p><strong>Situation</strong><br><span id="modalSituation"></span></p>
-    <p><strong>Task</strong><br><span id="modalTask"></span></p>
-    <p><strong>Action</strong><br><span id="modalAction"></span></p>
-    <p><strong>How</strong><br><span id="modalHow"></span></p>
-    <p><strong>Result</strong><br><span id="modalResult"></span></p>
-    <div id="admin-actions"></div>
+<div class="modal-content">
+  <button class="close-modal" data-modal="caseStudyModal">×</button>
+  <h3 id="modalTitle"></h3>
+  <p id="modalTitleContent"></p>
+
+  <div class="case-study-section">
+    <strong>Situation</strong>
+    <span id="modalSituation"></span>
   </div>
+
+  <div class="case-study-section">
+    <strong>Task</strong>
+    <span id="modalTask"></span>
+  </div>
+
+  <div class="case-study-section">
+    <strong>Action</strong>
+    <span id="modalAction"></span>
+  </div>
+
+  <div class="case-study-section">
+    <strong>How</strong>
+    <span id="modalHow"></span>
+  </div>
+
+  <div class="case-study-section">
+    <strong>Result</strong>
+    <span id="modalResult"></span>
+  </div>
+
+  <div id="admin-actions"></div>
+ </div>
 </div>
   
 <!-- EDIT MODAL -->
