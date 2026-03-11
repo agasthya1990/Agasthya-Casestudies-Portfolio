@@ -4,293 +4,298 @@
   <meta charset="UTF-8" />
   <title>Admin Panel – Add Case Study</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16"> 
-<link rel="shortcut icon" href="images/favicon-16x16.png" type="image/png">
-<link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
-<style>
-  body {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    padding: 40px;
-    background-color: #f5f5f5;
-    margin: 0;
-  }
 
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #1f1f1f;
-  }
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+  <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
 
-  form {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 32px;
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  label {
-    font-weight: 700;
-    display: block;
-    margin-top: 22px;
-    margin-bottom: 8px;
-    color: #1f1f1f;
-  }
-
-  input {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    width: 100%;
-    padding: 12px 14px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #cfcfcf;
-    box-sizing: border-box;
-    font-size: 15px;
-  }
-
-  input:focus {
-    outline: none;
-    border-color: #007acc;
-    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.12);
-  }
-
-  .editor-wrapper {
-    margin-top: 5px;
-    border: 1px solid #cfcfcf;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  .ql-toolbar.ql-snow {
-    border: none;
-    border-bottom: 1px solid #e3e3e3;
-    background: #fafafa;
-  }
-
-  .ql-container.ql-snow {
-    border: none;
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    font-size: 15px;
-  }
-
-  .editor {
-    min-height: 180px;
-  }
-
-  .ql-editor {
-    min-height: 180px;
-    line-height: 1.7;
-    color: #1f1f1f;
-  }
-
-  .ql-editor.ql-blank::before {
-    color: #9a9a9a;
-    font-style: normal;
-  }
-
-  button {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    margin-top: 30px;
-    background-color: #007acc;
-    color: white;
-    padding: 13px 22px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-  }
-
-  button:hover {
-    background-color: #005ea3;
-  }
-
-  .helper-text {
-    font-size: 13px;
-    color: #666;
-    margin-top: 6px;
-  }
-
-  @media (max-width: 768px) {
+  <style>
     body {
-      padding: 20px;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      padding: 40px;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1f1f1f;
     }
 
     form {
-      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 32px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
 
-    .editor,
-    .ql-editor {
-      min-height: 150px;
+    label {
+      font-weight: 700;
+      display: block;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      color: #1f1f1f;
     }
-  }
-</style>
+
+    input {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #cfcfcf;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #007acc;
+      box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.12);
+    }
+
+    .editor-wrapper {
+      margin-top: 5px;
+      border: 1px solid #cfcfcf;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .ql-toolbar.ql-snow {
+      border: none;
+      border-bottom: 1px solid #e3e3e3;
+      background: #fafafa;
+    }
+
+    .ql-container.ql-snow {
+      border: none;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-size: 15px;
+    }
+
+    .editor {
+      min-height: 180px;
+    }
+
+    .ql-editor {
+      min-height: 180px;
+      line-height: 1.7;
+      color: #1f1f1f;
+    }
+
+    .ql-editor.ql-blank::before {
+      color: #9a9a9a;
+      font-style: normal;
+    }
+
+    .submit-btn {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      margin-top: 30px;
+      background-color: #007acc;
+      color: white;
+      padding: 13px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    .submit-btn:hover {
+      background-color: #005ea3;
+    }
+
+    .submit-btn:disabled {
+      background-color: #8cbfe3;
+      cursor: not-allowed;
+    }
+
+    .helper-text {
+      font-size: 13px;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      .editor,
+      .ql-editor {
+        min-height: 150px;
+      }
+    }
+  </style>
 </head>
 <body>
   <h1>Admin – Add Case Study</h1>
+
   <form id="caseForm">
     <label for="title">Title</label>
     <input type="text" id="title" required />
 
-<label for="situationEditor">Situation</label>
-<div class="editor-wrapper">
-  <div id="toolbar-situation">
-    <span class="ql-formats">
-      <select class="ql-header">
-        <option selected></option>
-        <option value="1"></option>
-        <option value="2"></option>
-      </select>
-      <select class="ql-align"></select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
-      <button class="ql-underline"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      <button class="ql-blockquote"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-link"></button>
-      <button class="ql-clean"></button>
-    </span>
-  </div>
-  <div id="situationEditor" class="editor"></div>
-</div>
+    <label for="situationEditor">Situation</label>
+    <div class="editor-wrapper">
+      <div id="toolbar-situation">
+        <span class="ql-formats">
+          <select class="ql-header">
+            <option selected></option>
+            <option value="1"></option>
+            <option value="2"></option>
+          </select>
+          <select class="ql-align"></select>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-bold"></button>
+          <button type="button" class="ql-italic"></button>
+          <button type="button" class="ql-underline"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-list" value="ordered"></button>
+          <button type="button" class="ql-list" value="bullet"></button>
+          <button type="button" class="ql-blockquote"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-link"></button>
+          <button type="button" class="ql-clean"></button>
+        </span>
+      </div>
+      <div id="situationEditor" class="editor"></div>
+    </div>
 
-<label for="taskEditor">Task</label>
-<div class="editor-wrapper">
-  <div id="toolbar-task">
-    <span class="ql-formats">
-      <select class="ql-header">
-        <option selected></option>
-        <option value="1"></option>
-        <option value="2"></option>
-      </select>
-      <select class="ql-align"></select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
-      <button class="ql-underline"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      <button class="ql-blockquote"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-link"></button>
-      <button class="ql-clean"></button>
-    </span>
-  </div>
-  <div id="taskEditor" class="editor"></div>
-</div>
+    <label for="taskEditor">Task</label>
+    <div class="editor-wrapper">
+      <div id="toolbar-task">
+        <span class="ql-formats">
+          <select class="ql-header">
+            <option selected></option>
+            <option value="1"></option>
+            <option value="2"></option>
+          </select>
+          <select class="ql-align"></select>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-bold"></button>
+          <button type="button" class="ql-italic"></button>
+          <button type="button" class="ql-underline"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-list" value="ordered"></button>
+          <button type="button" class="ql-list" value="bullet"></button>
+          <button type="button" class="ql-blockquote"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-link"></button>
+          <button type="button" class="ql-clean"></button>
+        </span>
+      </div>
+      <div id="taskEditor" class="editor"></div>
+    </div>
 
-<label for="actionEditor">Action</label>
-<div class="editor-wrapper">
-  <div id="toolbar-action">
-    <span class="ql-formats">
-      <select class="ql-header">
-        <option selected></option>
-        <option value="1"></option>
-        <option value="2"></option>
-      </select>
-      <select class="ql-align"></select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
-      <button class="ql-underline"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      <button class="ql-blockquote"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-link"></button>
-      <button class="ql-clean"></button>
-    </span>
-  </div>
-  <div id="actionEditor" class="editor"></div>
-</div>
+    <label for="actionEditor">Action</label>
+    <div class="editor-wrapper">
+      <div id="toolbar-action">
+        <span class="ql-formats">
+          <select class="ql-header">
+            <option selected></option>
+            <option value="1"></option>
+            <option value="2"></option>
+          </select>
+          <select class="ql-align"></select>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-bold"></button>
+          <button type="button" class="ql-italic"></button>
+          <button type="button" class="ql-underline"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-list" value="ordered"></button>
+          <button type="button" class="ql-list" value="bullet"></button>
+          <button type="button" class="ql-blockquote"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-link"></button>
+          <button type="button" class="ql-clean"></button>
+        </span>
+      </div>
+      <div id="actionEditor" class="editor"></div>
+    </div>
 
-<label for="howEditor">How</label>
-<div class="editor-wrapper">
-  <div id="toolbar-how">
-    <span class="ql-formats">
-      <select class="ql-header">
-        <option selected></option>
-        <option value="1"></option>
-        <option value="2"></option>
-      </select>
-      <select class="ql-align"></select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
-      <button class="ql-underline"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      <button class="ql-blockquote"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-link"></button>
-      <button class="ql-clean"></button>
-    </span>
-  </div>
-  <div id="howEditor" class="editor"></div>
-</div>
+    <label for="howEditor">How</label>
+    <div class="editor-wrapper">
+      <div id="toolbar-how">
+        <span class="ql-formats">
+          <select class="ql-header">
+            <option selected></option>
+            <option value="1"></option>
+            <option value="2"></option>
+          </select>
+          <select class="ql-align"></select>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-bold"></button>
+          <button type="button" class="ql-italic"></button>
+          <button type="button" class="ql-underline"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-list" value="ordered"></button>
+          <button type="button" class="ql-list" value="bullet"></button>
+          <button type="button" class="ql-blockquote"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-link"></button>
+          <button type="button" class="ql-clean"></button>
+        </span>
+      </div>
+      <div id="howEditor" class="editor"></div>
+    </div>
 
-<label for="resultEditor">Result</label>
-<div class="editor-wrapper">
-  <div id="toolbar-result">
-    <span class="ql-formats">
-      <select class="ql-header">
-        <option selected></option>
-        <option value="1"></option>
-        <option value="2"></option>
-      </select>
-      <select class="ql-align"></select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
-      <button class="ql-underline"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      <button class="ql-blockquote"></button>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-link"></button>
-      <button class="ql-clean"></button>
-    </span>
-  </div>
-  <div id="resultEditor" class="editor"></div>
-</div>
+    <label for="resultEditor">Result</label>
+    <div class="editor-wrapper">
+      <div id="toolbar-result">
+        <span class="ql-formats">
+          <select class="ql-header">
+            <option selected></option>
+            <option value="1"></option>
+            <option value="2"></option>
+          </select>
+          <select class="ql-align"></select>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-bold"></button>
+          <button type="button" class="ql-italic"></button>
+          <button type="button" class="ql-underline"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-list" value="ordered"></button>
+          <button type="button" class="ql-list" value="bullet"></button>
+          <button type="button" class="ql-blockquote"></button>
+        </span>
+        <span class="ql-formats">
+          <button type="button" class="ql-link"></button>
+          <button type="button" class="ql-clean"></button>
+        </span>
+      </div>
+      <div id="resultEditor" class="editor"></div>
+    </div>
 
-    <button type="submit">Submit Case Study</button>
+    <button type="submit" class="submit-btn" id="submitBtn">Submit Case Study</button>
   </form>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import {
-      getFirestore,
-      collection,
-      addDoc
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
@@ -304,53 +309,42 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("caseForm");
+    function createEditor(editorId, toolbarId, placeholderText) {
+      return new Quill(`#${editorId}`, {
+        theme: "snow",
+        modules: {
+          toolbar: `#${toolbarId}`
+        },
+        placeholder: placeholderText
+      });
+    }
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    function getEditorHtml(editor) {
+      const html = editor.root.innerHTML.trim();
+      return html === "<p><br></p>" ? "" : html;
+    }
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    addDoc
-  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    function clearEditor(editor) {
+      editor.setContents([]);
+    }
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
-    authDomain: "agasthya-case-studies.firebaseapp.com",
-    projectId: "agasthya-case-studies",
-    storageBucket: "agasthya-case-studies.appspot.com",
-    messagingSenderId: "297538227832",
-    appId: "1:297538227832:web:625891c11d377c9d88278d"
-  };
+    function focusFirstInvalidField(title, editorsMap) {
+      if (!title.value.trim()) {
+        title.focus();
+        return;
+      }
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+      for (const editor of editorsMap) {
+        if (!getEditorHtml(editor.instance)) {
+          editor.instance.focus();
+          return;
+        }
+      }
+    }
 
-  function createEditor(editorId, toolbarId, placeholderText) {
-    return new Quill(`#${editorId}`, {
-      theme: "snow",
-      modules: {
-        toolbar: `#${toolbarId}`
-      },
-      placeholder: placeholderText
-    });
-  }
-
-  function getEditorHtml(editor) {
-    const html = editor.root.innerHTML.trim();
-    return html === "<p><br></p>" ? "" : html;
-  }
-
-  function clearEditor(editor) {
-    editor.setContents([]);
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
+    const titleInput = document.getElementById("title");
     const form = document.getElementById("caseForm");
+    const submitBtn = document.getElementById("submitBtn");
 
     const situationEditor = createEditor("situationEditor", "toolbar-situation", "Write the situation...");
     const taskEditor = createEditor("taskEditor", "toolbar-task", "Write the task...");
@@ -358,10 +352,18 @@
     const howEditor = createEditor("howEditor", "toolbar-how", "Write the implementation details...");
     const resultEditor = createEditor("resultEditor", "toolbar-result", "Write the result...");
 
+    const editors = [
+      { name: "Situation", instance: situationEditor },
+      { name: "Task", instance: taskEditor },
+      { name: "Action", instance: actionEditor },
+      { name: "How", instance: howEditor },
+      { name: "Result", instance: resultEditor }
+    ];
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const title = document.getElementById("title").value.trim();
+      const title = titleInput.value.trim();
       const situation = getEditorHtml(situationEditor);
       const task = getEditorHtml(taskEditor);
       const action = getEditorHtml(actionEditor);
@@ -370,8 +372,12 @@
 
       if (!title || !situation || !task || !action || !how || !result) {
         alert("All fields are required.");
+        focusFirstInvalidField(titleInput, editors);
         return;
       }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
 
       try {
         await addDoc(collection(db, "caseStudies"), {
@@ -391,37 +397,14 @@
         clearEditor(actionEditor);
         clearEditor(howEditor);
         clearEditor(resultEditor);
+        titleInput.focus();
       } catch (error) {
-        console.error("❌ Error adding document: ", error);
+        console.error("❌ Error adding document:", error);
         alert("Failed to submit case study. Please try again.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Case Study";
       }
-    });
-  });
-</script>
-
-        if (!title || !situation || !task || !action || !how || !result) {
-          alert("All fields are required.");
-          return;
-        }
-
-        try {
-          await addDoc(collection(db, "caseStudies"), {
-            Title: title,
-            Situation: situation,
-            Task: task,
-            Action: action,
-            How: how,
-            Result: result,
-            timestamp: new Date()
-          });
-
-          alert("✅ Case study submitted successfully!");
-          form.reset();
-        } catch (error) {
-          console.error("❌ Error adding document: ", error);
-          alert("Failed to submit case study. Please try again.");
-        }
-      });
     });
   </script>
 </body>
