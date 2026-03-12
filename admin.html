@@ -23,7 +23,7 @@
       color: #1f1f1f;
     }
 
-    form {
+    .panel {
       max-width: 900px;
       margin: auto;
       background: white;
@@ -92,9 +92,9 @@
       font-style: normal;
     }
 
-    .submit-btn {
+    button {
       font-family: 'Helvetica', 'Arial', sans-serif;
-      margin-top: 30px;
+      margin-top: 20px;
       background-color: #007acc;
       color: white;
       padding: 13px 22px;
@@ -105,19 +105,47 @@
       font-weight: 600;
     }
 
-    .submit-btn:hover {
+    button:hover {
       background-color: #005ea3;
     }
 
-    .submit-btn:disabled {
+    button:disabled {
       background-color: #8cbfe3;
       cursor: not-allowed;
     }
 
-    .helper-text {
-      font-size: 13px;
-      color: #666;
-      margin-top: 6px;
+    .secondary-btn {
+      background-color: #444;
+      margin-left: 10px;
+    }
+
+    .secondary-btn:hover {
+      background-color: #2f2f2f;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .status-text {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .error-text {
+      color: #b00020;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
 
     @media (max-width: 768px) {
@@ -125,7 +153,7 @@
         padding: 20px;
       }
 
-      form {
+      .panel {
         padding: 20px;
       }
 
@@ -139,163 +167,193 @@
 <body>
   <h1>Admin – Add Case Study</h1>
 
-  <form id="caseForm">
-    <label for="title">Title</label>
-    <input type="text" id="title" required />
+  <div class="panel" id="loginPanel">
+    <h2 style="margin-top: 0; color: #1f1f1f;">Admin Login</h2>
 
-    <label for="situationEditor">Situation</label>
-    <div class="editor-wrapper">
-      <div id="toolbar-situation">
-        <span class="ql-formats">
-          <select class="ql-header">
-            <option selected></option>
-            <option value="1"></option>
-            <option value="2"></option>
-          </select>
-          <select class="ql-align"></select>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-bold"></button>
-          <button type="button" class="ql-italic"></button>
-          <button type="button" class="ql-underline"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-list" value="ordered"></button>
-          <button type="button" class="ql-list" value="bullet"></button>
-          <button type="button" class="ql-blockquote"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-link"></button>
-          <button type="button" class="ql-clean"></button>
-        </span>
+    <label for="loginEmail">Email</label>
+    <input type="email" id="loginEmail" placeholder="Enter admin email" />
+
+    <label for="loginPassword">Password</label>
+    <input type="password" id="loginPassword" placeholder="Enter password" />
+
+    <button id="loginBtn" type="button">Sign In</button>
+    <div id="loginError" class="error-text"></div>
+  </div>
+
+  <div class="panel hidden" id="adminPanel">
+    <div class="top-bar">
+      <div>
+        <strong style="color:#1f1f1f;">Signed in as:</strong>
+        <span id="signedInUser" style="color:#1f1f1f;"></span>
       </div>
-      <div id="situationEditor" class="editor"></div>
+      <button id="logoutBtn" type="button" class="secondary-btn">Sign Out</button>
     </div>
 
-    <label for="taskEditor">Task</label>
-    <div class="editor-wrapper">
-      <div id="toolbar-task">
-        <span class="ql-formats">
-          <select class="ql-header">
-            <option selected></option>
-            <option value="1"></option>
-            <option value="2"></option>
-          </select>
-          <select class="ql-align"></select>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-bold"></button>
-          <button type="button" class="ql-italic"></button>
-          <button type="button" class="ql-underline"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-list" value="ordered"></button>
-          <button type="button" class="ql-list" value="bullet"></button>
-          <button type="button" class="ql-blockquote"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-link"></button>
-          <button type="button" class="ql-clean"></button>
-        </span>
-      </div>
-      <div id="taskEditor" class="editor"></div>
-    </div>
+    <form id="caseForm">
+      <label for="title">Title</label>
+      <input type="text" id="title" required />
 
-    <label for="actionEditor">Action</label>
-    <div class="editor-wrapper">
-      <div id="toolbar-action">
-        <span class="ql-formats">
-          <select class="ql-header">
-            <option selected></option>
-            <option value="1"></option>
-            <option value="2"></option>
-          </select>
-          <select class="ql-align"></select>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-bold"></button>
-          <button type="button" class="ql-italic"></button>
-          <button type="button" class="ql-underline"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-list" value="ordered"></button>
-          <button type="button" class="ql-list" value="bullet"></button>
-          <button type="button" class="ql-blockquote"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-link"></button>
-          <button type="button" class="ql-clean"></button>
-        </span>
+      <label for="situationEditor">Situation</label>
+      <div class="editor-wrapper">
+        <div id="toolbar-situation">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+            </select>
+            <select class="ql-align"></select>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-bold"></button>
+            <button type="button" class="ql-italic"></button>
+            <button type="button" class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+            <button type="button" class="ql-blockquote"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-link"></button>
+            <button type="button" class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="situationEditor" class="editor"></div>
       </div>
-      <div id="actionEditor" class="editor"></div>
-    </div>
 
-    <label for="howEditor">How</label>
-    <div class="editor-wrapper">
-      <div id="toolbar-how">
-        <span class="ql-formats">
-          <select class="ql-header">
-            <option selected></option>
-            <option value="1"></option>
-            <option value="2"></option>
-          </select>
-          <select class="ql-align"></select>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-bold"></button>
-          <button type="button" class="ql-italic"></button>
-          <button type="button" class="ql-underline"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-list" value="ordered"></button>
-          <button type="button" class="ql-list" value="bullet"></button>
-          <button type="button" class="ql-blockquote"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-link"></button>
-          <button type="button" class="ql-clean"></button>
-        </span>
+      <label for="taskEditor">Task</label>
+      <div class="editor-wrapper">
+        <div id="toolbar-task">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+            </select>
+            <select class="ql-align"></select>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-bold"></button>
+            <button type="button" class="ql-italic"></button>
+            <button type="button" class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+            <button type="button" class="ql-blockquote"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-link"></button>
+            <button type="button" class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="taskEditor" class="editor"></div>
       </div>
-      <div id="howEditor" class="editor"></div>
-    </div>
 
-    <label for="resultEditor">Result</label>
-    <div class="editor-wrapper">
-      <div id="toolbar-result">
-        <span class="ql-formats">
-          <select class="ql-header">
-            <option selected></option>
-            <option value="1"></option>
-            <option value="2"></option>
-          </select>
-          <select class="ql-align"></select>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-bold"></button>
-          <button type="button" class="ql-italic"></button>
-          <button type="button" class="ql-underline"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-list" value="ordered"></button>
-          <button type="button" class="ql-list" value="bullet"></button>
-          <button type="button" class="ql-blockquote"></button>
-        </span>
-        <span class="ql-formats">
-          <button type="button" class="ql-link"></button>
-          <button type="button" class="ql-clean"></button>
-        </span>
+      <label for="actionEditor">Action</label>
+      <div class="editor-wrapper">
+        <div id="toolbar-action">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+            </select>
+            <select class="ql-align"></select>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-bold"></button>
+            <button type="button" class="ql-italic"></button>
+            <button type="button" class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+            <button type="button" class="ql-blockquote"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-link"></button>
+            <button type="button" class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="actionEditor" class="editor"></div>
       </div>
-      <div id="resultEditor" class="editor"></div>
-    </div>
 
-    <button type="submit" class="submit-btn" id="submitBtn">Submit Case Study</button>
-  </form>
+      <label for="howEditor">How</label>
+      <div class="editor-wrapper">
+        <div id="toolbar-how">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+            </select>
+            <select class="ql-align"></select>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-bold"></button>
+            <button type="button" class="ql-italic"></button>
+            <button type="button" class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+            <button type="button" class="ql-blockquote"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-link"></button>
+            <button type="button" class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="howEditor" class="editor"></div>
+      </div>
+
+      <label for="resultEditor">Result</label>
+      <div class="editor-wrapper">
+        <div id="toolbar-result">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+            </select>
+            <select class="ql-align"></select>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-bold"></button>
+            <button type="button" class="ql-italic"></button>
+            <button type="button" class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+            <button type="button" class="ql-blockquote"></button>
+          </span>
+          <span class="ql-formats">
+            <button type="button" class="ql-link"></button>
+            <button type="button" class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="resultEditor" class="editor"></div>
+      </div>
+
+      <button type="submit" id="submitBtn">Submit Case Study</button>
+      <div id="submitStatus" class="status-text"></div>
+    </form>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyALUiNuAEVlKjXQuq-qF_CtdY8jNzeGTJs",
@@ -306,8 +364,22 @@
       appId: "1:297538227832:web:625891c11d377c9d88278d"
     };
 
+    const ADMIN_EMAIL = "agasthyarocker@gmail.com";
+
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    const loginPanel = document.getElementById("loginPanel");
+    const adminPanel = document.getElementById("adminPanel");
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const loginError = document.getElementById("loginError");
+    const signedInUser = document.getElementById("signedInUser");
+    const submitBtn = document.getElementById("submitBtn");
+    const submitStatus = document.getElementById("submitStatus");
+    const form = document.getElementById("caseForm");
+    const titleInput = document.getElementById("title");
 
     function createEditor(editorId, toolbarId, placeholderText) {
       return new Quill(`#${editorId}`, {
@@ -328,40 +400,62 @@
       editor.setContents([]);
     }
 
-    function focusFirstInvalidField(title, editorsMap) {
-      if (!title.value.trim()) {
-        title.focus();
-        return;
-      }
-
-      for (const editor of editorsMap) {
-        if (!getEditorHtml(editor.instance)) {
-          editor.instance.focus();
-          return;
-        }
-      }
-    }
-
-    const titleInput = document.getElementById("title");
-    const form = document.getElementById("caseForm");
-    const submitBtn = document.getElementById("submitBtn");
-
     const situationEditor = createEditor("situationEditor", "toolbar-situation", "Write the situation...");
     const taskEditor = createEditor("taskEditor", "toolbar-task", "Write the task...");
     const actionEditor = createEditor("actionEditor", "toolbar-action", "Write the action...");
     const howEditor = createEditor("howEditor", "toolbar-how", "Write the implementation details...");
     const resultEditor = createEditor("resultEditor", "toolbar-result", "Write the result...");
 
-    const editors = [
-      { name: "Situation", instance: situationEditor },
-      { name: "Task", instance: taskEditor },
-      { name: "Action", instance: actionEditor },
-      { name: "How", instance: howEditor },
-      { name: "Result", instance: resultEditor }
-    ];
+    function setAdminView(user) {
+      if (user && user.email === ADMIN_EMAIL) {
+        loginPanel.classList.add("hidden");
+        adminPanel.classList.remove("hidden");
+        signedInUser.textContent = user.email;
+      } else {
+        adminPanel.classList.add("hidden");
+        loginPanel.classList.remove("hidden");
+        signedInUser.textContent = "";
+      }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      setAdminView(user);
+    });
+
+    loginBtn.addEventListener("click", async () => {
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      loginError.textContent = "";
+
+      if (!email || !password) {
+        loginError.textContent = "Enter email and password.";
+        return;
+      }
+
+      try {
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        if (result.user.email !== ADMIN_EMAIL) {
+          await signOut(auth);
+          loginError.textContent = "Access denied.";
+        }
+      } catch (err) {
+        loginError.textContent = "Login failed: " + err.message;
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+    });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      submitStatus.textContent = "";
+
+      const user = auth.currentUser;
+      if (!user || user.email !== ADMIN_EMAIL) {
+        alert("Please sign in first.");
+        return;
+      }
 
       const title = titleInput.value.trim();
       const situation = getEditorHtml(situationEditor);
@@ -372,7 +466,6 @@
 
       if (!title || !situation || !task || !action || !how || !result) {
         alert("All fields are required.");
-        focusFirstInvalidField(titleInput, editors);
         return;
       }
 
@@ -390,7 +483,7 @@
           timestamp: new Date()
         });
 
-        alert("✅ Case study submitted successfully!");
+        submitStatus.textContent = "✅ Case study submitted successfully!";
         form.reset();
         clearEditor(situationEditor);
         clearEditor(taskEditor);
@@ -400,7 +493,7 @@
         titleInput.focus();
       } catch (error) {
         console.error("❌ Error adding document:", error);
-        alert("Failed to submit case study. Please try again.");
+        submitStatus.textContent = "Failed to submit case study. Please try again.";
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "Submit Case Study";
