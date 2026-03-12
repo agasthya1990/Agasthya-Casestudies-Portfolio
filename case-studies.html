@@ -490,7 +490,11 @@
         if (e.target === caseStudyModal) caseStudyModal.style.display = "none";
         if (e.target === editModal) editModal.style.display = "none";
       });
-    });
+      document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModals();
+  }
+});
 
     async function loadCaseStudies() {
       const querySnapshot = await getDocs(collection(db, "caseStudies"));
