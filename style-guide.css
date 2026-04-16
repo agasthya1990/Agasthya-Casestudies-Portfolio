@@ -41,13 +41,16 @@ header p {
 nav ul {
   list-style: none;
   padding: 0;
-  text-align: center;
   margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 nav li {
-  display: inline-block;
-  margin: 0 15px;
+  margin: 0;
 }
 
 nav a {
